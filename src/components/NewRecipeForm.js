@@ -10,6 +10,9 @@ const NewRecipe = props => {
     ingredients: [{ id: "", ingredient: "", quantity: "", unit: "" }],
     instrcutions: ""
   });
+  const [ingredients, setIngredients] = useState({
+    ingredients: {}
+  });
 
   const handleChange = e => {
     e.preventDefault();
@@ -18,7 +21,7 @@ const NewRecipe = props => {
 
   const handleIngredient = e => {
     e.preventDefault();
-    setNewRecipe({ ...newRecipe.ingredients, [e.target.name]: e.target.value });
+    setIngredients({ ...ingredients, [e.target.name]: e.target.value });
   };
 
   const onSubmit = () => {
@@ -28,7 +31,11 @@ const NewRecipe = props => {
   };
 
   const onSubmitIngredient = () => {
-    setNewRecipe(newRecipe.ingredients);
+    setNewRecipe({
+      ...newRecipe,
+      ingredients: [...newRecipe.ingredients, ingredients]
+    });
+    setIngredients({});
   };
 
   return (
@@ -40,6 +47,7 @@ const NewRecipe = props => {
             type="text"
             name="title"
             value={newRecipe.title}
+            placeholder="Title:"
             onChange={handleChange}
           />
           <br />
@@ -47,6 +55,7 @@ const NewRecipe = props => {
             type="text"
             name="author"
             value={newRecipe.author}
+            placeholder="Author:"
             onChange={handleChange}
           />
           <form onSubmit={onSubmitIngredient}>
@@ -54,20 +63,24 @@ const NewRecipe = props => {
               type="text"
               name="ingredient"
               value={newRecipe.ingredients.ingredient}
+              placeholder="Ingredient"
               onChange={handleIngredient}
             />
             <input
               type="text"
               name="quantity"
               value={newRecipe.ingredients.quantity}
+              placeholder="Amount:"
               onChange={handleIngredient}
             />
             <input
               type="text"
               name="unit"
               value={newRecipe.ingredients.unit}
+              placeholder="Unit:"
               onChange={handleIngredient}
             />
+            <button>Add Ingredient</button>
           </form>
           {ingredients.map(item => {
             <div>
@@ -79,11 +92,13 @@ const NewRecipe = props => {
           <br />
           <input
             type="textarea"
-            name="instrcutions"
+            name="instructions"
             value={newRecipe.instrcutions}
+            placeholder="Instructions:"
             onChange={handleChange}
           />
           <br />
+          <button>Add Recipe!</button>
         </form>
       </div>
     </div>
