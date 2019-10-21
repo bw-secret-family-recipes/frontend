@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axiosAuth from "";
+import axiosAuth from "../utils/axiosAuth";
 
 const NewRecipe = props => {
   const [newRecipe, setNewRecipe] = useState({
