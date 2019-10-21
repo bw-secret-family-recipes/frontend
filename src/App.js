@@ -7,7 +7,7 @@ import Signup from "./components/Signup";
 import RecipeList from "./components/RecipeList";
 import NewRecipe from "./components/NewRecipeForm";
 
-import { reducer, Context } from "utils";
+import { reducer, Context } from "./utils";
 
 function App() {
   const [state, dispatch] = useReducer(reducer);
@@ -18,6 +18,7 @@ function App() {
         <header className="App-header">
           <Nav />
         </header>
+
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
@@ -26,11 +27,6 @@ function App() {
           <Redirect from="/login" to="/dashboard" />
         </Switch>
 
-        {/* <Route />// Dashboard /dashboard
-        <Route></Route>// Login /login
-        <Route></Route>// Signup /signup
-        <Route></Route>// NewRecipeForm /create
-        <Route></Route>// Edit? */}
       </main>
     </Context.Provider>
   );

@@ -1,18 +1,18 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
-const SearchForm = (props) => {
-    
+const Signup = (props) => {
+
     const [confirmPass, setConfirmPass] = useState('')
     const [newUser, setNewUser] = useState({
 
         username: '',
-        password:'',
-    })    
-    
+        password: '',
+    })
+
     const handlePassword = e => {
         setConfirmPass(e.target.value);
-        if ( newUser.password !== confirmPass){
+        if (newUser.password !== confirmPass) {
             alert('Passwords Do Not Match');
         } else {
 
@@ -32,13 +32,13 @@ const SearchForm = (props) => {
         e.preventDefault();
 
         axios.post('', newUser)
-        .then(response => {
-            console.log(response)
-        })
-        .catch(err => console.log(error))
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => console.log(error))
     }
 
-    
+
     return (
         <div>
             <form onClick={handleSubmit}>
@@ -51,7 +51,7 @@ const SearchForm = (props) => {
     )
 }
 
-export default SearchForm
+export default Signup
 
 
 // if (password !== confirmPassword) {
