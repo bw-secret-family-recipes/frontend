@@ -7,19 +7,23 @@ const FootContainer = styled.div`
     width: 90%;
     justify-content: center;
     background: #8A00D4;
-    flex-direction: column;
+    
     color: white;
 `;
 
-const Address = styled.p`
+const Address = styled.div`
     display: flex;
     justify-content: center;
+    flex-direction: column;
 `;
-const Image = styled.img`
+const Image = styled.div`
     display: flex;
     justify-content: center;
 `
-
+const Contact = styled.div`
+    display: flex;
+    flex-direction: column;
+`
 const Footer = () => {
 
     return (
@@ -31,8 +35,14 @@ const Footer = () => {
                 <p>800.222.2222</p>
             </Address>
             <Image>
-                <img src = {logo} alt = 'logo'></img>
+                <img src = {logo} alt = 'logo'/>
             </Image>
+            
+            <Contact>
+                <p>E-MAIL: info@secretfamilyrecipes.com</p>
+                <h3>Secret Family Recipes</h3>
+            </Contact>
+            
         </FootContainer>
     )
 }
