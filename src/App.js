@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { Route, Switch, Redirect } from "react-router-dom"
 
 import Nav from './components/Nav';
@@ -7,8 +7,7 @@ import Signup from "./components/Signup";
 import RecipeList from "./components/RecipeList";
 import NewRecipe from "./components/NewRecipeForm";
 
-import { reducer, Context, PrivateRoute } from "./utils";
-
+import { Context, reducer, axiosAuth, PrivateRoute } from "./utils";
 import Footer from './components/Footer';
 
 
@@ -29,8 +28,6 @@ function App() {
           <PrivateRoute path="/new-recipe" component={NewRecipe} />
           <Redirect from="/login" to="/dashboard" />
         </Switch>
-
-
 
       </main>
     </Context.Provider>
