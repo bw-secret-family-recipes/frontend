@@ -2,6 +2,8 @@ import React from 'react';
 import { Route } from "react-router-dom"
 
 import Nav from './components/Nav';
+import Footer from './components/Footer';
+import RecipeCard from './components/RecipeCard';
 
 function App() {
   return (
@@ -16,6 +18,10 @@ function App() {
       <Route></Route>// Signup /signup
       <Route></Route>// NewRecipeForm /create
       <Route></Route>// Edit?
+      <RecipeCard/>
+      <footer>
+        <Footer/>
+      </footer>
     </main>
   );
 }
