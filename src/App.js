@@ -9,6 +9,8 @@ import NewRecipe from "./components/NewRecipeForm";
 
 import { reducer, Context } from "./utils";
 
+import Footer from './components/Footer';
+
 function App() {
   const [state, dispatch] = useReducer(reducer);
   return (
