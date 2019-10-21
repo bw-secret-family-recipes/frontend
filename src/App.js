@@ -1,10 +1,16 @@
 import React from 'react';
 import { Route } from "react-router-dom"
 
+import Nav from './components/Nav';
 
 function App() {
   return (
     <main>
+    
+      <header className="App-header">
+        <Nav />
+      </header>
+    
       <Route></Route>// Dashboard /dashboard
       <Route></Route>// Login /login
       <Route></Route>// Signup /signup
@@ -15,3 +21,4 @@ function App() {
 }
 
 export default App;
+
