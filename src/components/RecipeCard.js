@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
-function RecipeCard() {
 
+function RecipeCard(props) {
+    const card = '';
 
     return (
         <div className = 'card-wrapper'>
@@ -20,6 +22,9 @@ function RecipeCard() {
                     <li>ingredient 4</li>
                     <li>ingredient 5</li>
                 </ul>
+            </div>
+            <div className = 'instructions'>
+                <p>Instructions</p>
             </div>
         </div>
     )
