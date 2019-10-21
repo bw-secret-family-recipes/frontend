@@ -1,26 +1,34 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import logo from './images/logo.png';
 
-const NavUl = styled.ul`
+const NavWrap = styled.nav`
+    font-family: 'Poppins', sans-serif;
     display: flex;
-    width: 800px;
     justify-content: space-between;
-    background: #8a00d4;
-    padding: 1rem 2rem;
-    border-radius: 0px 0 5px 5px;
+    padding: 1rem;
+    background: #3f043c;
 `;
-const NavLi = styled.li`
-    display:flex;
-    text-decoration: none;
-    
+
+const ImgBox = styled.img`
+    width: 200px;
+
 `;
+
+const LinkWrap = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 60%;
+`;
+
 const StyledLink = styled(Link)`
     text-decoration: none;
-    color: white;
-    font-size: 1.2rem;
+    color: #8ec63f;
+    font-size: 2rem;
     :hover {
-        color: #ffc46b;
+        color: #c7720f;
         
     }
 `;
@@ -29,23 +37,17 @@ const StyledLink = styled(Link)`
 const Nav = () =>{
 
     return (
-        <div>
-            <nav>
-                <NavUl>
-                    <NavLi><StyledLink to="">
-                    Dashboard</StyledLink></NavLi>
-
-                    <NavLi><StyledLink to="">
-                    Receipe</StyledLink></NavLi>
-
-                    <NavLi><StyledLink>
-                    Search</StyledLink></NavLi>
-                    
-                    <NavLi><StyledLink>
-                    Sign Out</StyledLink></NavLi>
-                </NavUl>
-            </nav>
-        </div>
+        <NavWrap>
+            <div>
+                <ImgBox src={logo} alt='Secrect Family Recipes' />
+            </div>
+            <LinkWrap>
+                <StyledLink to="">Dashboard </StyledLink>
+                <StyledLink to="">Receipe   </StyledLink>
+                <StyledLink to="">Search    </StyledLink>
+                <StyledLink to="">Sign Out  </StyledLink>
+            </LinkWrap>
+        </NavWrap>
     );
 }
 export default Nav
