@@ -82,13 +82,13 @@ const NewRecipe = props => {
             />
             <button>Add Ingredient</button>
           </form>
-          {ingredients.map(item => {
+          {ingredients.map(item => (
             <div>
               {item.ingredient}:{item.quantity}
               {item.unit}
               <br />
-            </div>;
-          })}
+            </div>
+          ))}
           <br />
           <input
             type="textarea"

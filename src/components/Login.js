@@ -4,7 +4,7 @@ import axios from "axios";
 
 //props needs history
 
-export default Login = (props) => {
+const Login = (props) => {
 
     const [user, setUser] = useState({
         username: "admin", //remove after testing 
@@ -41,3 +41,5 @@ export default Login = (props) => {
         </form>
     )
 }
+
+export default Login;
