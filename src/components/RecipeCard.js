@@ -1,32 +1,52 @@
 import React from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 
+
+const CardContainer = styled.div`
+    display: flex;
+    background: #3F043C;
+    flex-direction: column;
+    width: 250px;
+    height: 400px;
+    border-radius: 15px;
+    padding: 5px;
+    color: white;
+`
+const CardTitle = styled.h2`
+    display: flex;
+    justify-content: center;
+`
+const IngredientsUL = styled.ul`
+    background: #D85505;
+`
+const IngredientsLI = styled.li`
+    list-style-type: square;
+`
 
 function RecipeCard(props) {
     const card = '';
 
     return (
-        <div className = 'card-wrapper'>
+        <CardContainer>
             <div className = 'card-title'>
-                <h2>Recipe Title</h2>
+                <CardTitle>Recipe Title</CardTitle>
             </div>
             <div className = 'card-author'>
                 <h3>By : author</h3>
             </div>
             <div className = 'ingredients'>
-                <ul>
-                    <li>ingredient 1</li>
-                    <li>ingredient 2</li>
-                    <li>ingredient 3</li>
-                    <li>ingredient 4</li>
-                    <li>ingredient 5</li>
-                </ul>
+                <IngredientsUL>
+                    <IngredientsLI>ingredient 1</IngredientsLI>
+                    <IngredientsLI>ingredient 2</IngredientsLI>
+                    <IngredientsLI>ingredient 3</IngredientsLI>
+                    <IngredientsLI>ingredient 4</IngredientsLI>
+                    <IngredientsLI>ingredient 5</IngredientsLI>
+                </IngredientsUL>
             </div>
             <div className = 'instructions'>
-                <p>Instructions</p>
+                <p>Instructions: </p>
             </div>
-        </div>
+        </CardContainer>
     )
 }
 
