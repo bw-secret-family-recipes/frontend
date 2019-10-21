@@ -2,11 +2,13 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
+
+
 const NavUl = styled.ul`
     display: flex;
     width: 800px;
     justify-content: space-between;
-    background: #8a00d4;
+    background: #3f043c;
     padding: 1rem 2rem;
     border-radius: 0px 0 5px 5px;
 `;
@@ -16,11 +18,12 @@ const NavLi = styled.li`
     
 `;
 const StyledLink = styled(Link)`
+    font-family: 'Poppins', sans-serif;
     text-decoration: none;
-    color: white;
-    font-size: 1.2rem;
+    color: #8ec63f;
+    font-size: 2rem;
     :hover {
-        color: #ffc46b;
+        color: #c7720f;
         
     }
 `;
@@ -31,6 +34,7 @@ const Nav = () =>{
     return (
         <div>
             <nav>
+                
                 <NavUl>
                     <NavLi><StyledLink to="">
                     Dashboard</StyledLink></NavLi>
@@ -40,7 +44,7 @@ const Nav = () =>{
 
                     <NavLi><StyledLink>
                     Search</StyledLink></NavLi>
-                    
+
                     <NavLi><StyledLink>
                     Sign Out</StyledLink></NavLi>
                 </NavUl>
