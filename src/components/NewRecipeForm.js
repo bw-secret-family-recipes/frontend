@@ -8,7 +8,7 @@ const NewRecipe = props => {
     title: "",
     author: "",
     ingredients: [{ id: "", ingredient: "", quantity: "", unit: "" }],
-    instrcutions: ""
+    instructions: ""
   });
   const [ingredients, setIngredients] = useState({
     ingredients: {}
@@ -93,7 +93,7 @@ const NewRecipe = props => {
           <input
             type="textarea"
             name="instructions"
-            value={newRecipe.instrcutions}
+            value={newRecipe.instructions}
             placeholder="Instructions:"
             onChange={handleChange}
           />

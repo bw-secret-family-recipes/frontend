@@ -1,6 +1,3 @@
-import react, { useReducer } from "react";
-
-
 export default reducer = (state = {}, action) => {
     switch (action.type) {
         case "INIT":

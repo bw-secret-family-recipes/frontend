@@ -7,9 +7,10 @@ import Signup from "./components/Signup";
 import RecipeList from "./components/RecipeList";
 import NewRecipe from "./components/NewRecipeForm";
 
-import { reducer, Context } from "./utils";
+import { reducer, Context, PrivateRoute } from "./utils";
 
 import Footer from './components/Footer';
+
 
 function App() {
   const [state, dispatch] = useReducer(reducer);
@@ -28,6 +29,8 @@ function App() {
           <PrivateRoute path="/new-recipe" component={NewRecipe} />
           <Redirect from="/login" to="/dashboard" />
         </Switch>
+
+
 
       </main>
     </Context.Provider>

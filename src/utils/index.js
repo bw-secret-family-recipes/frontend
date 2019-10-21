@@ -1,3 +1,4 @@
-export * from "axiosAuth";
-export * from "reducer";
-export * from "context";
+export * from "./axiosAuth";
+export * from "./reducer";
+export * from "./context";
+export * from "./PrivateRoute";
