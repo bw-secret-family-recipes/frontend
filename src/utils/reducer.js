@@ -3,9 +3,7 @@ const reducer = (state = {}, action) => {
         case "INIT":
             return {
                 ...state,
-                recipes: [
-                    ...action.payload
-                ]
+                ...action.payload
             }
             break;
         case "ADD":
@@ -17,10 +15,30 @@ const reducer = (state = {}, action) => {
                 ]
             }
             break;
+        case "EDIT":
+            return {
+                ...state,
+                recipes: [
+                    ...state.recipes.map(v => {
+                        if (v.id == action.payload.id) return action.payload
+                    })
+                ]
+            }
+            break
+        case "DELETE":
+            return {
+                ...state,
+                recipes: [
+                    ...state.cards.filter(v => {
+                        v.id != action.payload.id
+                    })
+                ]
+            }
+            break
         case "UPDATE_SHOW":
             return {
                 ...state,
-                "show cards": [
+                "show recipes": [
                     ...action.payload
                 ]
             }
