@@ -96,25 +96,28 @@ const NewRecipe = props => {
 
   const onSubmitIngredient = e => {
     e.preventDefault();
-    setNewRecipe({
-      ...newRecipe,
-      ingredients: [...newRecipe.ingredients, ingredients]
-    });
-    setIngredients({});
-    document.getElementById("ingredientinput").value = "";
-    // document.getElementById("quantityinput").value = "";
-    // document.getElementById("unitinput").value = "";
+    if (ingredients.ingredients != "") {
+      setNewRecipe({
+        ...newRecipe,
+        ingredients: [...newRecipe.ingredients, ingredients]
+      });
+      setIngredients({ ingredients: "" });
+      document.getElementById("ingredientinput").value = "";
+      // document.getElementById("quantityinput").value = "";
+      // document.getElementById("unitinput").value = "";
+    }
   };
 
   const onSubmitTag = e => {
-    console.log("clicked");
-    e.preventDefault();
-    setNewRecipe({
-      ...newRecipe,
-      categories: [...newRecipe.categories, tags]
-    });
-    setTags({});
-    document.getElementById("taginput").value = "";
+    if (tags.tags != "") {
+      e.preventDefault();
+      setNewRecipe({
+        ...newRecipe,
+        categories: [...newRecipe.categories, tags]
+      });
+      setTags({ tags: "" });
+      document.getElementById("taginput").value = "";
+    }
   };
 
   return (
@@ -183,7 +186,7 @@ const NewRecipe = props => {
             </IngredFormSet>
           </form> */}
           {newRecipe.ingredients.slice(0).map(item => (
-            <p>{item.ingredients}</p>
+            <p key={item.ingredients}>{item.ingredients}</p>
           ))}
           <InputArea
             type="textarea"
@@ -206,7 +209,7 @@ const NewRecipe = props => {
             </IngredFormSet>
           </form>
           {newRecipe.categories.map(item => (
-            <span>{item.tags}, </span>
+            <span key={item.tags}>{item.tags}, </span>
           ))}
           <Space />
           <BtnClick>Add Recipe!</BtnClick>
