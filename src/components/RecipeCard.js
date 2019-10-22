@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
+
 import {Edit} from 'styled-icons/boxicons-regular/Edit';
+import { axiosAuth, Context } from "../utils"
+
+
+
 
 const CardContainer = styled.div`
     display: flex;
@@ -24,29 +29,74 @@ const IngredientsLI = styled.li`
 `
 
 
-function RecipeCard(props) {
-    const card = 'use find for the id here';
+
+
+
+function RecipeCard({ card }) {
+
+    const state = useContext(Context)
+
+    const [editing, setEditing] = useState(false);
+    const [editCard, setEditCard] = useState(card);
+
+    function handleChange(e) {
+        let event = { ...e }
+        setEditCard(old => {
+            return {
+                ...old,
+                [event.target.name]: event.target.value
+            }
+        })
+    }
+
+    function handleEdit() {
+        setEditing(v => !v)
+    }
+
+    function handleDelete() {
+        axiosAuth.delete(`api/recipe/${card.id}`).then(res => console.log(res)).catch(res => console.log(res))
+
+        state.dispatch({
+            type: "DELETE",
+            payload: card.id
+        })
+    }
+
+    function handleSubmit() {
+        axiosAuth.put(`api/recipe/${card.id}`, editCard).then(res => console.log(res)).catch(res => console.log(res))
+        setEditing(false)
+        state.dispatch({
+            type: "EDIT",
+            payload: editCard
+        })
+    }
+
 
     return (
         <CardContainer>
-            <div className = 'card-title'>
-                <CardTitle>Recipe Title</CardTitle>
+            <div className='card-title'>
+                <CardTitle name="recipe_name" onChange={handleChange} contenteditable={editing}>{card["recipe_name"]}</CardTitle>
             </div>
-            <div className = 'card-author'>
-                <h3>By : author</h3>
+            <div className='card-author'>
+                <h3>By : <span name="source" onChange={handleChange} contenteditable={editing}>{card.source}</span></h3>
             </div>
-            <div className = 'ingredients'>
+            <div className='ingredients'>
                 <IngredientsUL>
-                    <IngredientsLI>ingredient 1</IngredientsLI>
-                    <IngredientsLI>ingredient 2</IngredientsLI>
-                    <IngredientsLI>ingredient 3</IngredientsLI>
-                    <IngredientsLI>ingredient 4</IngredientsLI>
-                    <IngredientsLI>ingredient 5</IngredientsLI>
+                    {card.ingredients.map(v => {
+                        return (
+                            <IngredientsLI name="ingredients" onChange={handleChange} contenteditable={editing}>{v}</IngredientsLI>
+                        )
+                    })}
+
                 </IngredientsUL>
             </div>
-            <div className = 'instructions'>
-                <p>Instructions: </p>
+            <div className='instructions'>
+                <p>Instructions: <span name="instructions" onChange={handleChange} contenteditable={editing}>{card.instructions}</span></p>
             </div>
+
+            <button onClick={handleEdit}>edit</button>
+            <button onClick={handleDelete}>delete</button>
+            {editing && <button onClick={handleSubmit}>submit</button>}
         </CardContainer>
     )
 }
