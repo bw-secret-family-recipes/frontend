@@ -1,7 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from './images/logo.png';
+import SearchForm from "./SearchForm"
+
 
 const NavWrap = styled.nav`
     font-family: 'Poppins', sans-serif;
@@ -35,7 +37,17 @@ const StyledLink = styled(Link)`
 `;
 
 //nav needs dashboard, receipe, search 
-const Nav = () =>{
+const Nav = (props) => {
+
+    let signin = localStorage.getItem("token") ? "Sign Out" : "Sign In"
+
+    function handleSignin() {
+        if (signin == "Sign Out") {
+            localStorage.setItem("token", "")
+        } else {
+            props.history.push("/")
+        }
+    }
 
     return (
         <NavWrap>
@@ -43,10 +55,9 @@ const Nav = () =>{
                 <ImgBox src={logo} alt='Secrect Family Recipes' />
             </div>
             <LinkWrap>
-                <StyledLink to="">Dashboard </StyledLink>
-                <StyledLink to="">Receipe   </StyledLink>
-                <StyledLink to="">Search    </StyledLink>
-                <StyledLink to="">Sign Out  </StyledLink>
+                <SearchForm></SearchForm>
+                <Link to="/dashboard"><StyledLink to="">Dashboard </StyledLink></Link>
+                <StyledLink onClick={handleSignin}>{(signin)}</StyledLink>
             </LinkWrap>
         </NavWrap>
     );

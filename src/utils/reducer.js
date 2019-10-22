@@ -17,6 +17,14 @@ const reducer = (state = {}, action) => {
                 ]
             }
             break;
+        case "UPDATE_SHOW":
+            return {
+                ...state,
+                "show cards": [
+                    ...action.payload
+                ]
+            }
+            break
         default:
             return {
                 ...state
