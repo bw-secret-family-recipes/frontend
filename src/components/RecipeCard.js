@@ -1,6 +1,9 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
+
+import {Edit} from 'styled-icons/boxicons-regular/Edit';
 import { axiosAuth, Context } from "../utils"
+
 
 
 
@@ -24,6 +27,10 @@ const IngredientsUL = styled.ul`
 const IngredientsLI = styled.li`
     list-style-type: square;
 `
+
+
+
+
 
 function RecipeCard({ card }) {
 
@@ -63,6 +70,7 @@ function RecipeCard({ card }) {
             payload: editCard
         })
     }
+
 
     return (
         <CardContainer>

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
 const Wrap = styled.div`
     height: 50vh;
     background: #d85505;
