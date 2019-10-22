@@ -1,23 +1,26 @@
-import React, { useReducer } from "react";
+import React, { useContext } from "react";
 import { reducer } from "../utils";
+import { Context } from "../utils"
 
 function SearchForm(props) {
-    const [state, dispatch] = useReducer(reducer);
+    const ctx = useContext(Context);
 
     //need a piece of state called data 
 
     function handleChange(e) {
         let input = e.target.value;
-        let filtered = state.data.filter(value => {
-            let obj = input.split("").reduce((acc, val) => {
+        let filtered = ctx.state.recipes.filter(value => {
+            if (!input) return true
+            let obj = input.toLowerCase().split("").reduce((acc, val) => {
                 return {
                     ...acc,
                     [val]: 1
                 }
-            })
+            }, {})
+
 
             for (let letter in obj) {
-                if (!value.title.includes(letter)) {
+                if (!value["recipe_name"].toLowerCase().includes(letter)) {
                     return false;
                 }
             }
@@ -25,7 +28,7 @@ function SearchForm(props) {
 
         }, {})
 
-        dispatch({
+        ctx.dispatch({
             type: "UPDATE_SHOW",
             payload: filtered
         })

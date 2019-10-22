@@ -35,6 +35,15 @@ const StyledLink = styled(Link)`
         
     }
 `;
+const StyledAnchor = styled.span`
+    text-decoration: none;
+    color: #8ec63f;
+    font-size: 2rem;
+    :hover {
+        color: #c7720f;
+        
+    }
+`
 
 //nav needs dashboard, receipe, search 
 const Nav = (props) => {
@@ -44,9 +53,8 @@ const Nav = (props) => {
     function handleSignin() {
         if (signin == "Sign Out") {
             localStorage.setItem("token", "")
-        } else {
-            props.history.push("/")
         }
+        props.history.push("/")
     }
 
     return (
@@ -57,7 +65,7 @@ const Nav = (props) => {
             <LinkWrap>
                 <SearchForm></SearchForm>
                 <StyledLink to="/dashboard">Dashboard </StyledLink>
-                <StyledLink onClick={handleSignin}>{(signin)}</StyledLink>
+                <StyledAnchor onClick={handleSignin}>{(signin)}</StyledAnchor>
             </LinkWrap>
         </NavWrap>
     );

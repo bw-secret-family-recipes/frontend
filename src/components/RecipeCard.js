@@ -1,11 +1,8 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 
-import {Edit} from 'styled-icons/boxicons-regular/Edit';
+// import {Edit} from 'styled-icons/boxicons-regular/Edit';
 import { axiosAuth, Context } from "../utils"
-
-
-
 
 const CardContainer = styled.div`
     display: flex;
@@ -34,7 +31,7 @@ const IngredientsLI = styled.li`
 
 function RecipeCard({ card }) {
 
-    const state = useContext(Context)
+    const { state } = useContext(Context)
 
     const [editing, setEditing] = useState(false);
     const [editCard, setEditCard] = useState(card);
@@ -75,23 +72,23 @@ function RecipeCard({ card }) {
     return (
         <CardContainer>
             <div className='card-title'>
-                <CardTitle name="recipe_name" onChange={handleChange} contenteditable={editing}>{card["recipe_name"]}</CardTitle>
+                <CardTitle name="recipe_name" onChange={handleChange} contentEditable={editing}>{card["recipe_name"]}</CardTitle>
             </div>
             <div className='card-author'>
-                <h3>By : <span name="source" onChange={handleChange} contenteditable={editing}>{card.source}</span></h3>
+                <h3>By : <span name="source" onChange={handleChange} contentEditable={editing}>{card.source}</span></h3>
             </div>
             <div className='ingredients'>
                 <IngredientsUL>
-                    {card.ingredients.map(v => {
+                    {card.ingredients.map((v, i) => {
                         return (
-                            <IngredientsLI name="ingredients" onChange={handleChange} contenteditable={editing}>{v}</IngredientsLI>
+                            <IngredientsLI key={i} name="ingredients" onChange={handleChange} contentEditable={editing}>{v}</IngredientsLI>
                         )
                     })}
 
                 </IngredientsUL>
             </div>
             <div className='instructions'>
-                <p>Instructions: <span name="instructions" onChange={handleChange} contenteditable={editing}>{card.instructions}</span></p>
+                <p>Instructions: <span name="instructions" onChange={handleChange} contentEditable={editing}>{card.instructions}</span></p>
             </div>
 
             <button onClick={handleEdit}>edit</button>
