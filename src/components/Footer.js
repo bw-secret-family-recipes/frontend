@@ -37,6 +37,7 @@ const Contact = styled.div`
     display: flex;
     flex-direction: column;
     font-size: .9rem;
+    padding-top: 3%;
 `
 const Footer = () => {
 

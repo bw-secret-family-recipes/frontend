@@ -31,7 +31,7 @@ function App() {
           <PrivateRoute path="/new-recipe" component={NewRecipe} />
           <Redirect from="/login" to="/dashboard" />
         </Switch>
-
+       
         <Footer />
 
       </main>
