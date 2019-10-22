@@ -7,13 +7,14 @@ const NavWrap = styled.nav`
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: space-between;
+    height: 15vh;
     padding: 1rem;
     background: #3f043c;
 `;
 
 const ImgBox = styled.img`
     width: 200px;
-
+    padding-left: 1rem;
 `;
 
 const LinkWrap = styled.div`

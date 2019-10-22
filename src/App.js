@@ -4,6 +4,7 @@ import { Route, Switch, Redirect } from "react-router-dom"
 import Nav from './components/Nav';
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Dashboard from'./components/Dashboard';
 import RecipeList from "./components/RecipeList";
 import NewRecipe from "./components/NewRecipeForm";
 
@@ -19,15 +20,19 @@ function App() {
 
         <header className="App-header">
           <Nav />
+          
         </header>
 
         <Switch>
+          <Route path='/Dashboard' component={Dashboard} />
           <Route exact path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <PrivateRoute path="/dashboard" component={RecipeList} />
           <PrivateRoute path="/new-recipe" component={NewRecipe} />
           <Redirect from="/login" to="/dashboard" />
         </Switch>
+
+        <Footer />
 
       </main>
     </Context.Provider>
