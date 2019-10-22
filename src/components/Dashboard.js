@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+
 import RecipeList from "./RecipeList"
 import Nav from './Nav';
 

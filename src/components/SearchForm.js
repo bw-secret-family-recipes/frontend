@@ -1,6 +1,16 @@
 import React, { useContext } from "react";
+import styled from 'styled-components';
 import { reducer } from "../utils";
 import { Context } from "../utils"
+
+const InputBox = styled.input`
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  padding: .5em;
+  margin: .5rem;
+`;
 
 function SearchForm(props) {
     const ctx = useContext(Context);
@@ -36,7 +46,7 @@ function SearchForm(props) {
 
 
     return (
-        <input onChange={handleChange} type="text" placeholder="Search" autofill="on" name="search" />
+        <InputBox onChange={handleChange} type="text" placeholder="Search" autofill="on" name="search" />
     )
 }
 
