@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import data from '../data';
 
 const Wrap = styled.div`
     height: 50vh;
@@ -13,6 +13,7 @@ const Bold = styled.h1`
 `;
 
 function Dashboard() {
+    
     return (
         <Wrap>
             <Bold>Dash</Bold>
