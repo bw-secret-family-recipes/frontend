@@ -27,8 +27,23 @@ const IngredientsUL = styled.ul`
 const IngredientsLI = styled.li`
     list-style-type: square;
 `
+const EditButton = styled.button`
+    background: green;
+    color: white;
+    border-radius: 15px;
 
+`
 
+const DeleteButton = styled.button`
+    background: red;
+    color: white;
+    border-radius: 15px;
+`
+const SubmitButton = styled.button`
+    background: #3f043c;
+    color: white;
+    border-radius: 15px;
+`
 
 
 
@@ -94,9 +109,9 @@ function RecipeCard({ card }) {
                 <p>Instructions: <span name="instructions" onChange={handleChange} contenteditable={editing}>{card.instructions}</span></p>
             </div>
 
-            <button onClick={handleEdit}>edit</button>
-            <button onClick={handleDelete}>delete</button>
-            {editing && <button onClick={handleSubmit}>submit</button>}
+            <EditButton onClick={handleEdit}>edit</EditButton>
+            <DeleteButton onClick={handleDelete}>delete</DeleteButton>
+            {editing && <SubmitButton onClick={handleSubmit}>submit</SubmitButton>}
         </CardContainer>
     )
 }

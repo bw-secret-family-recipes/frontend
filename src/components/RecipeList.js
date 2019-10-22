@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
-import RecipeCard from './RecipeCard';
+
 
 const RecipeContainer = styled.div`
     display: flex;
@@ -20,6 +20,7 @@ const RecipeName = styled(Link)`
 `
 
 function RecipeList(props) {
+    console.log(props);
     return(
         <RecipeContainer>
             {/* {card.map(item => (
