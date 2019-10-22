@@ -6,12 +6,8 @@ import Nav from './Nav';
 import data from '../data';
 
 const Wrap = styled.div`
-    height: 50vh;
+    height: 100%;
     background: #f2e2ce;
-    margin: 0;
-`;
-
-const Bold = styled.h1`
     margin: 0;
 `;
 
