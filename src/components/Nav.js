@@ -56,7 +56,7 @@ const Nav = (props) => {
             </div>
             <LinkWrap>
                 <SearchForm></SearchForm>
-                <Link to="/dashboard"><StyledLink to="">Dashboard </StyledLink></Link>
+                <StyledLink to="/dashboard">Dashboard </StyledLink>
                 <StyledLink onClick={handleSignin}>{(signin)}</StyledLink>
             </LinkWrap>
         </NavWrap>
