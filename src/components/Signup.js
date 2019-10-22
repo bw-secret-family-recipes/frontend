@@ -1,5 +1,41 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components';
 import axios from 'axios';
+
+const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #d85505;
+  padding-top: 5%;
+  padding-bottom: 5%;
+`;
+const MainForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1em;
+  background: #f2e2ce;
+  border-radius: 3px;
+`;
+const BtnClick = styled.button`
+  width: 14em;
+  height:3em;
+  margin: auto;
+  border: 1px solid #3f043c;
+  border-radius: 3px;
+  background: white;
+  color: #d85505;
+`;
+const InputBox = styled.input`
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  padding: .5em;
+  margin: .5rem;
+`;
 
 const Signup = (props) => {
 
@@ -40,14 +76,15 @@ const Signup = (props) => {
 
 
     return (
-        <div>
-            <form onClick={handleSubmit}>
-                <input type='text' name='username' value='newUser.username' placeholder='Username' onChange={handleChange} />
-                <input type='password' name='username' value='newUser.password' placeholder='Password' onChange={handleChange} pattern='' />
-                <input type='text' name='username' value='confirmPass' placeholder='Confirm Password' onChange={handlePassword} />
-                <button>Submit</button>
-            </form>
-        </div>
+        <Wrap>
+            <MainForm onClick={handleSubmit}>
+                <h1>Sign In</h1>
+                <InputBox type='text' name='username' value='newUser.username' placeholder='Username' onChange={handleChange} />
+                <InputBox type='password' name='username' value='newUser.password' placeholder='Password' onChange={handleChange} pattern='' />
+                <InputBox type='text' name='username' value='confirmPass' placeholder='Confirm Password' onChange={handlePassword} />
+                <BtnClick>Submit</BtnClick>
+            </MainForm>
+        </Wrap>
     )
 }
 
