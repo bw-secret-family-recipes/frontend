@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axiosAuth from "../utils/axiosAuth";
-import styled from 'styled-components';
+import { axiosAuth } from "../utils";
+import styled from "styled-components";
 
 const Wrap = styled.div`
   display: flex;
@@ -11,20 +11,20 @@ const Wrap = styled.div`
   padding-bottom: 5%;
 `;
 const InputBox = styled.input`
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.2;
   border: 1px solid lightgrey;
   border-radius: 3px;
-  padding: .5em;
-  margin: .5rem;
+  padding: 0.5em;
+  margin: 0.5rem;
 `;
 const InputArea = styled.textarea`
-font-family: 'Poppins', sans-serif;
-font-size: 1.2;
-border: 1px solid lightgrey;
-border-radius: 3px;
-padding: .5em;
-margin: .5rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  padding: 0.5em;
+  margin: 0.5rem;
 `;
 const MainForm = styled.form`
   display: flex;
@@ -41,11 +41,10 @@ const IngredFormSet = styled.fieldset`
   border: 1px solid #3f043c;
   border-radius: 3px;
   margin: 1em 0;
-  
 `;
 const BtnClick = styled.button`
   width: 14em;
-  height:3em;
+  height: 3em;
   margin: auto;
   border: 1px solid #3f043c;
   border-radius: 3px;
@@ -53,7 +52,7 @@ const BtnClick = styled.button`
   color: #d85505;
 `;
 const Space = styled.p`
-  margin: .8em;
+  margin: 0.8em;
   padding: 0;
 `;
 
@@ -80,18 +79,23 @@ const NewRecipe = props => {
     setIngredients({ ...ingredients, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = () => {
+  const onSubmit = e => {
+    e.preventDefault();
     axiosAuth()
-      .post("", newRecipe)
-      .then(res => console.log(res.data), props.history.push("/dashboard"));
+      .post("/recipe", newRecipe)
+      .then(res => console.log(res.data));
   };
 
-  const onSubmitIngredient = () => {
+  const onSubmitIngredient = e => {
+    e.preventDefault();
     setNewRecipe({
       ...newRecipe,
       ingredients: [...newRecipe.ingredients, ingredients]
     });
     setIngredients({});
+    document.getElementById("ingredientinput").value = "";
+    document.getElementById("quantityinput").value = "";
+    document.getElementById("unitinput").value = "";
   };
 
   return (
@@ -106,7 +110,7 @@ const NewRecipe = props => {
             placeholder="Title:"
             onChange={handleChange}
           />
-          
+
           <InputBox
             type="text"
             name="author"
@@ -117,40 +121,41 @@ const NewRecipe = props => {
           <form onSubmit={onSubmitIngredient}>
             <IngredFormSet>
               <legend>Ingredients</legend>
-                <InputBox
+              <InputBox
+                id="ingredientinput"
                 type="text"
                 name="ingredient"
                 value={newRecipe.ingredients.ingredient}
                 placeholder="Ingredient"
                 onChange={handleIngredient}
-                />
-                <InputBox
+              />
+              <InputBox
+                id="quantityinput"
                 type="text"
                 name="quantity"
                 value={newRecipe.ingredients.quantity}
                 placeholder="Amount:"
                 onChange={handleIngredient}
-                />
-                <InputBox
+              />
+              <InputBox
+                id="unitinput"
                 type="text"
                 name="unit"
                 value={newRecipe.ingredients.unit}
                 placeholder="Unit:"
                 onChange={handleIngredient}
-                />
-                <Space/>
-                <BtnClick>Add Ingredient</BtnClick>
-                <Space/>
-              </IngredFormSet>
+              />
+              <Space />
+              <BtnClick>Add Ingredient</BtnClick>
+              <Space />
+            </IngredFormSet>
           </form>
-          {/*{ingredients.map(item => (
-            <div>
-              {item.ingredient}:{item.quantity}
-              {item.unit}
-              <br />
-            </div>
-          ))}*/}
-          
+          {newRecipe.ingredients.slice(1).map(item => (
+            <p>
+              {item.ingredient}: {item.quantity} {item.unit}
+            </p>
+          ))}
+
           <InputArea
             type="textarea"
             name="instructions"
