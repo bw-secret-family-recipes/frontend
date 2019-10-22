@@ -43,10 +43,10 @@ const Nav = () =>{
                 <ImgBox src={logo} alt='Secrect Family Recipes' />
             </div>
             <LinkWrap>
-                <StyledLink to="">Dashboard </StyledLink>
-                <StyledLink to="">Receipe   </StyledLink>
-                <StyledLink to="">Search    </StyledLink>
-                <StyledLink to="">Sign Out  </StyledLink>
+                <StyledLink to=""> </StyledLink>
+                <StyledLink to="">   </StyledLink>
+                <StyledLink to="">    </StyledLink>
+                <StyledLink to="">Sign In  </StyledLink>
             </LinkWrap>
         </NavWrap>
     );
