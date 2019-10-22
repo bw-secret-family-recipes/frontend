@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styled from "styled-components";
 import axios from "axios";
+import { recipe } from "../data"
+import { Context } from "../utils"
 
 const Wrap = styled.div`
   display: flex;
@@ -32,6 +34,8 @@ const InputBox = styled.input`
 
 const Login = (props) => {
 
+    const state = useContext(Context)
+
     const [user, setUser] = useState({
         username: "admin", //remove after testing 
         password: "password" //remove after testing
@@ -40,12 +44,20 @@ const Login = (props) => {
     function handleSubmit(e) {
         e.preventDefault();
 
-        axios.post("", user).then(res => {
+        localStorage.setItem("token", "asd") //remove later
+        props.history.push("/dashboard") //remove later
+
+        axios.post("api/login", user).then(res => {
             localStorage.setItem("token", res);
             props.history.push("/dashboard")
         }).catch(err => console.log(err))
 
-        alert("working");
+        //initialize data
+        state.dispatch({
+            type: "ADD",
+            payload: recipe
+        })
+
     }
 
     function handleChange(e) {
@@ -62,8 +74,8 @@ const Login = (props) => {
     return (
         <Wrap>
             <MainForm onSubmit={handleSubmit} autofill="on">
-                <InputBox type="text" name="username" placeholder="Username..." value={user.username} />
-                <InputBox type="password" name="password" placeholder="Password..." value={user.password} />
+                <InputBox onChange={handleChange} type="text" name="username" placeholder="Username..." value={user.username} />
+                <InputBox onChange={handleChange} type="password" name="password" placeholder="Password..." value={user.password} />
                 <InputBox type="submit" />
             </MainForm>
         </Wrap>

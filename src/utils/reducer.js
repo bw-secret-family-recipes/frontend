@@ -1,4 +1,4 @@
-const reducer = (state = {}, action) => {
+const reducer = (state = { recipes: [] }, action) => {
     switch (action.type) {
         case "INIT":
             return {
@@ -11,7 +11,11 @@ const reducer = (state = {}, action) => {
                 ...state,
                 recipes: [
                     ...state.recipes,
-                    action.payload
+                    ...action.payload
+                ],
+                "show recipes": [
+                    ...state.recipes,
+                    ...action.payload
                 ]
             }
             break;

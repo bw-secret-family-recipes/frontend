@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
+import RecipeCard from './RecipeCard';
+import { Context } from "../utils"
 
 const RecipeContainer = styled.div`
     display: flex;
@@ -20,16 +21,16 @@ const RecipeName = styled(Link)`
 `
 
 function RecipeList(props) {
-    console.log(props);
-    return(
+
+    const ctx = useContext(Context);
+
+    return (
         <RecipeContainer>
-            {/* {card.map(item => (
-                <div key = {card.id}>
-                    <Link to = {`/`}>
-                        <RecipeName>{card.recipe_name}</RecipeName>
-                    </Link>
+            {ctx.state["show recipes"].map(item => (
+                <div key={item.id}>
+                    <RecipeCard card={item}></RecipeCard>
                 </div>
-            ))} */}
+            ))}
         </RecipeContainer>
     )
 }
