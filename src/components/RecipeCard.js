@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import {Edit} from 'styled-icons/boxicons-regular/Edit';
 
 const CardContainer = styled.div`
     display: flex;
@@ -22,6 +22,7 @@ const IngredientsUL = styled.ul`
 const IngredientsLI = styled.li`
     list-style-type: square;
 `
+
 
 function RecipeCard(props) {
     const card = 'use find for the id here';

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import RecipeCard from './RecipeCard';
 
 const RecipeContainer = styled.div`
     display: flex;
@@ -21,10 +22,13 @@ const RecipeName = styled(Link)`
 function RecipeList(props) {
     return(
         <RecipeContainer>
-            {/* map over items here */}
-            <Link to = {`/`}>
-                <RecipeName>Recipe Name</RecipeName>
-            </Link>
+            {/* {card.map(item => (
+                <div key = {card.id}>
+                    <Link to = {`/`}>
+                        <RecipeName>{card.recipe_name}</RecipeName>
+                    </Link>
+                </div>
+            ))} */}
         </RecipeContainer>
     )
 }
