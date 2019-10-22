@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { axiosAuth, Context } from "../utils"
 
 const CardContainer = styled.div`
+    overflow:auto;
     display: flex;
     background: #3F043C;
     flex-direction: column;
@@ -13,12 +14,21 @@ const CardContainer = styled.div`
     border-radius: 15px;
     padding: 5px;
     color: white;
+    margin-right:50px;
+    margin-top:50px;
+
+    .ingredients{
+        width:100%;
+        min-height:150px;
+        overflow:auto;
+    }
 `
 const CardTitle = styled.h2`
     display: flex;
     justify-content: center;
 `
 const IngredientsUL = styled.ul`
+    height:auto;
     background: #D85505;
 `
 const IngredientsLI = styled.li`
@@ -103,7 +113,7 @@ function RecipeCard({ card }) {
                 </IngredientsUL>
             </div>
             <div className='instructions'>
-                <p>Instructions: <span name="instructions" onChange={handleChange} contentEditable={editing}>{card.instructions}</span></p>
+                <p>Instructions: <span name="instructions" onChange={handleChange} contentEditable={editing}>{card["recipe_instructions"]}</span></p>
             </div>
 
             <EditButton onClick={handleEdit}>edit</EditButton>
