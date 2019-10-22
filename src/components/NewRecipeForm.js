@@ -63,7 +63,7 @@ const NewRecipe = props => {
     // ingredients: [{ id: "", ingredient: "", quantity: "", unit: "" }],
     categories: [],
     ingredients: [],
-    instructions: ""
+    recipe_instructions: ""
   });
   //these states are held seperately so they can be put into the array
   const [ingredients, setIngredients] = useState({
@@ -190,8 +190,8 @@ const NewRecipe = props => {
           ))}
           <InputArea
             type="textarea"
-            name="instructions"
-            value={newRecipe.instructions}
+            name="recipe_instructions"
+            value={newRecipe.recipe_instructions}
             placeholder="Instructions:"
             onChange={handleChange}
           />
