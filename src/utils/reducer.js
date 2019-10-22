@@ -30,7 +30,7 @@ const reducer = (state = {}, action) => {
                 ...state,
                 recipes: [
                     ...state.cards.filter(v => {
-                        v.id != action.payload.id
+                        return v.id != action.payload.id
                     })
                 ]
             }
