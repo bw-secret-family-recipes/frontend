@@ -3,7 +3,7 @@ export const recipe = [
     "id": 1,
     "user_id": 5,
     "recipe_name": "Moms Spaghetti",
-    "source": "string",
+    "source": "Jessica Simpson",
     "categories": [
        "Dinner",
        "Beef"
@@ -25,7 +25,7 @@ export const recipe = [
     "id": 2,
     "user_id": 5,
     "recipe_name": "Grilled Cheese",
-    "source": "string",
+    "source": "Mark Collins",
     "categories": [
        "Lunch",
        "Dairy"
