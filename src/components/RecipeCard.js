@@ -22,6 +22,14 @@ const CardContainer = styled.div`
         min-height:150px;
         overflow:auto;
     }
+
+    .card-title{
+        background:url(https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=687&q=80) 100% / cover;
+        h2{
+            background:#0005;
+            color:white;
+        }
+    }
 `
 const CardTitle = styled.h2`
     display: flex;
@@ -95,14 +103,14 @@ function RecipeCard({ card }) {
 
 
     return (
-        <CardContainer>
+        <CardContainer className="no-scroll">
             <div className='card-title'>
                 <CardTitle name="recipe_name" onChange={handleChange} contentEditable={editing}>{card["recipe_name"]}</CardTitle>
             </div>
             <div className='card-author'>
                 <h3>By : <span name="source" onChange={handleChange} contentEditable={editing}>{card.source}</span></h3>
             </div>
-            <div className='ingredients'>
+            <div className='ingredients no-scroll'>
                 <IngredientsUL>
                     {card.ingredients.map((v, i) => {
                         return (
