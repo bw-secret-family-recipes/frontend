@@ -24,7 +24,7 @@ const IngredientsLI = styled.li`
 `
 
 function RecipeCard(props) {
-    const card = '';
+    const card = 'use find for the id here';
 
     return (
         <CardContainer>
