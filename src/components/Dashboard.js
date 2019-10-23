@@ -1,17 +1,27 @@
-import React from "react";
 
-import RecipeList from "./RecipeList";
-import Nav from "./Nav";
+import React from 'react';
+import { Route } from 'react-router-dom';
+import styled from 'styled-components';
+import DashNav from './DashNav';
+import RecipeList from "./RecipeList"
+import NavLrg from './NavLrg';
+
+const Column = styled.div`
+    display: flex;
+`;
 
 function Dashboard(props) {
-  return (
-    <>
-      <header className="App-header">
-        <Nav {...props} />
-      </header>
+    return (
+        <div >
+            <header className="App-header">
+                <NavLrg {...props} />
+            </header>
+            <Column>
+                <DashNav></DashNav>
+                <RecipeList></RecipeList>
+            </Column>
+        </div>
+    );
 
-      <RecipeList></RecipeList>
-    </>
-  );
 }
 export default Dashboard;

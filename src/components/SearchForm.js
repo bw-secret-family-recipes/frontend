@@ -8,8 +8,7 @@ const InputBox = styled.input`
   font-size: 1.2;
   border: 1px solid lightgrey;
   border-radius: 3px;
-  padding: .5em;
-  margin: .5rem;
+  
 `;
 
 function SearchForm(props) {

@@ -8,7 +8,7 @@ import LoginWrapper from "./components/LoginWrapper"
 import { Context, reducer, axiosAuth, PrivateRoute } from "./utils";
 import Footer from './components/Footer';
 
-import "./App.css"
+import "./App.css";
 
 
 function App() {
@@ -16,8 +16,9 @@ function App() {
 
   const initRecipes = (localStorage.getItem("recipes") ? JSON.parse(localStorage.getItem("recipes")) : [])
   const initShowRecipes = (localStorage.getItem("show recipes") ? JSON.parse(localStorage.getItem("show recipes")) : [])
-  state = state || { recipes: initRecipes, "show recipes": initShowRecipes }
 
+  state = state || {recipes: initRecipes, "show recipes": initShowRecipes}
+  
   return (
     <Context.Provider value={{ state, dispatch }}>
       <main>
