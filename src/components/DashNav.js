@@ -47,27 +47,27 @@ const DashNav = () => {
         <Wrap>
             <WrapBox onClick={() => handleClick("new recipe")}>
                 <h4>New Recipe</h4>
-                <i className="material-icons md-24">search</i>
+                <i className="material-icons md-24">new_releases</i>
             </WrapBox>
             <WrapBox onClick={() => handleClick("sort")}>
                 <h4>Sort</h4>
-                <i className="material-icons md-24">search</i>
+                <i className="material-icons md-24">sort</i>
             </WrapBox>
             <WrapBox onClick={() => handleClick("breakfast")}>
                 <h4>BreakFast</h4>
-                <i className="material-icons md-24">search</i>
+                <i className="material-icons md-24">brightness_low</i>
             </WrapBox>
             <WrapBox onClick={() => handleClick("lunch")}>
                 <h4>Lunch</h4>
-                <i className="material-icons md-24">search</i>
+                <i className="material-icons md-24">local_pizza</i>
             </WrapBox>
             <WrapBox onClick={() => handleClick("dinner")}>
                 <h4>Dinner</h4>
-                <i className="material-icons md-24">search</i>
+                <i className="material-icons md-24">fastfood</i>
             </WrapBox>
             <WrapBox onClick={() => handleClick("snack")}>
                 <h4>Snacks</h4>
-                <i className="material-icons md-24">search</i>
+                <i className="material-icons md-24">broken_image</i>
             </WrapBox>
         </Wrap>
     )
