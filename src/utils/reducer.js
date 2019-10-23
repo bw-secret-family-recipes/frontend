@@ -1,4 +1,7 @@
-const reducer = (state = {}, action ={ type: "" }) => {
+
+const reducer = (state = {}, action = { type: "" }) => {
+    console.log(state)
+
     switch (action.type) {
         case "INIT":
             localStorage.setItem("recipes", JSON.stringify(action.payload))
@@ -18,6 +21,7 @@ const reducer = (state = {}, action ={ type: "" }) => {
                 ...state.recipes,
                 ...action.payload
             ]))
+
             return {
                 ...state,
                 recipes: [
@@ -67,3 +71,4 @@ const reducer = (state = {}, action ={ type: "" }) => {
 
 reducer()
 export default reducer;
+

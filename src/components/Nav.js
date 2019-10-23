@@ -12,6 +12,7 @@ const NavWrap = styled.nav`
     height: 15vh;
     padding: 1rem;
     background: #3f043c;
+
     a {
         text-decoration: none;
         color: #8ec63f;

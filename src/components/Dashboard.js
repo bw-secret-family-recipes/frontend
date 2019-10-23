@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Route } from 'react-router-dom';
 import styled from 'styled-components';
@@ -17,11 +18,28 @@ function Dashboard(props) {
             <header className="App-header">
                 <NavLrg {...props} />
             </header>
-            <Column>
+//             <Column>
             <Route path="/dashboard" component={DashNav} />
             <Route path="/dashboard" component={RecipeList} />
             </Column>
         </>
     );
+// =======
+// import React from "react";
+
+// import RecipeList from "./RecipeList";
+// import Nav from "./Nav";
+
+// function Dashboard(props) {
+//   return (
+//     <>
+//       <header className="App-header">
+//         <Nav {...props} />
+//       </header>
+
+//       <RecipeList></RecipeList>
+//     </>
+//   );
+// >>>>>>> master
 }
-export default Dashboard
+export default Dashboard;
