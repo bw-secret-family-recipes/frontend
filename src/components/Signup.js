@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import axios from 'axios';
-import { Link } from "react-router-dom"
+import { axiosAuth } from '../utils';
 
 const Wrap = styled.div`
   display: flex;
@@ -43,33 +43,34 @@ const Signup = (props) => {
 
     const [confirmPass, setConfirmPass] = useState('')
     const [newUser, setNewUser] = useState({
-
-        username: '',
-        password: '',
+        // first_name: '',
+        // last_name: '',
+        // email: '',
+        // username: '',
+        // password: '',
     })
 
     const handlePassword = e => {
         setConfirmPass(e.target.value);
         if (newUser.password !== confirmPass) {
-            alert('Passwords Do Not Match');
+            // alert('Passwords Do Not Match');
         } else {
 
         }
     }
 
-
     const handleChange = e => {
+        e.preventDefault();
         setNewUser({
             ...newUser,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
         })
     }
-
 
     const handleSubmit = e => {
         e.preventDefault();
 
-        axios.post('', newUser)
+        axiosAuth().post('/auth/register', newUser)
             .then(response => {
                 console.log(response)
             })
@@ -79,12 +80,15 @@ const Signup = (props) => {
 
     return (
         <Wrap>
-            <MainForm onClick={handleSubmit}>
+            <MainForm>
                 <h1>Sign Up</h1>
-                <InputBox type='text' name='username' value='newUser.username' placeholder='Username' onChange={handleChange} />
-                <InputBox type='password' name='username' value='newUser.password' placeholder='Password' onChange={handleChange} pattern='' />
-                <InputBox type='text' name='username' value='confirmPass' placeholder='Confirm Password' onChange={handlePassword} />
-                <BtnClick>Submit</BtnClick>
+                <InputBox type='text' name='first_name' value={newUser.first_name} placeholder='First Name' onChange={handleChange} />
+                <InputBox type='text' name='last_name' value={newUser.last_name} placeholder='Last Name' onChange={handleChange} />
+                <InputBox type='email' name='email' value={newUser.email} placeholder='email' onChange={handleChange} />
+                <InputBox type='text' name='username' value={newUser.username} placeholder='Username' onChange={handleChange} />
+                <InputBox type='password' name='password' value={newUser.password} placeholder='Password' onChange={handleChange}/>
+                <InputBox type='password' name='confirmPass' value={confirmPass} placeholder='Confirm Password' onChange={handlePassword} />
+                <BtnClick onClick={handleSubmit} >Submit</BtnClick>
                 <Link to="/login">Login</Link>
             </MainForm>
         </Wrap>
