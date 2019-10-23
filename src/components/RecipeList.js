@@ -6,17 +6,24 @@ import NewRecipe from "./NewRecipeForm";
 import { Context } from "../utils";
 
 const RecipeContainer = styled.div`
-  padding: 100px 0;
-  display: flex;
-  background: #f2e2ce;
-  width: 100%;
-  height: 80vh;
-  border-radius: 10px;
-  flex-wrap: wrap;
-  //justify-content:center;
+    width: 100%;
+    display: flex;
+    background: #f2e2ce
+    min-height: 80vh;
+    flex-wrap:wrap;
+    justify-content: center;
 `;
-   
-    
+// ======= Master
+//   padding: 100px 0;
+//   display: flex;
+//   background: #f2e2ce;
+//   width: 100%;
+//   height: 80vh;
+//   border-radius: 10px;
+//   flex-wrap: wrap;
+//   //justify-content:center;
+// `;
+  
 
 const AddCard = styled.div`
   width: 250px;
