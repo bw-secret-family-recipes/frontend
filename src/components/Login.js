@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styled from "styled-components";
-import axios from "axios";
 import { recipe } from "../data"
-import { Context } from "../utils"
-
+import axios from "axios"
+import { Context, axiosAuth } from "../utils"
 import { Link } from "react-router-dom"
 
 const Wrap = styled.div`
@@ -41,15 +40,7 @@ const BtnClick = styled.button`
     color: #d85505;
 `;
 
-const BtnClick = styled.button`
-  width: 14em;
-  height:3em;
-  margin: auto;
-  border: 1px solid #3f043c;
-  border-radius: 3px;
-  background: white;
-  color: #d85505;
-`;
+
 
 //props needs history
 
@@ -68,16 +59,22 @@ const Login = (props) => {
         localStorage.setItem("token", "asd") //remove later
         props.history.push("/dashboard") //remove later
 
-        axios.post("api/login", user).then(res => {
+        axios.post("https://secret-family-recipes-backend.herokuapp.com/api/auth/login", user).then(res => {
             localStorage.setItem("token", res);
             props.history.push("/dashboard")
+
+            axiosAuth.get("recipes/").then(res => {
+                state.dispatch({
+                    type: "INIT",
+                    payload: res
+                })
+            }).catch(res => {
+                console.log(res)
+            })
+
         }).catch(err => console.log(err))
 
-        //initialize data
-        state.dispatch({
-            type: "ADD",
-            payload: recipe
-        })
+
 
     }
 

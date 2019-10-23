@@ -15,8 +15,8 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #3f043c;
+  min-height: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +28,6 @@
 .App-link {
   color: #09d3ac;
 }
-*/
 
 .no-scroll::-webkit-scrollbar {
   width: 0 !important;
