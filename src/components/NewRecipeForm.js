@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { axiosAuth } from "../utils";
 import styled from "styled-components";
+import { Context } from "../utils";
 
 const Wrap = styled.div`
+  overflow: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: #d85505;
-  padding-bottom: 5%;
+  padding: 5px;
+  border-radius: 15px;
 `;
+
 const InputBox = styled.input`
   font-family: "Poppins", sans-serif;
   font-size: 1.2;
@@ -57,6 +61,7 @@ const Space = styled.p`
 `;
 
 const NewRecipe = props => {
+  const state = useContext(Context);
   const [newRecipe, setNewRecipe] = useState({
     recipe_name: "",
     source: "",
@@ -92,28 +97,33 @@ const NewRecipe = props => {
     // axiosAuth()
     //   .post("/recipe", newRecipe)
     //   .then(res => console.log(res.data));
+    state.dispatch({
+      type: "ADD",
+      payload: [newRecipe]
+    });
   };
 
-  const onSubmitIngredient = e => {
+  const Ingredient = e => {
     e.preventDefault();
+    e.stopPropagation();
     if (ingredients.ingredients != "") {
       setNewRecipe({
         ...newRecipe,
-        ingredients: [...newRecipe.ingredients, ingredients]
+        ingredients: [...newRecipe.ingredients, ingredients.ingredients]
       });
       setIngredients({ ingredients: "" });
       document.getElementById("ingredientinput").value = "";
-      // document.getElementById("quantityinput").value = "";
-      // document.getElementById("unitinput").value = "";
+      console.log(newRecipe.ingredients);
     }
   };
 
-  const onSubmitTag = e => {
+  const Tag = e => {
     if (tags.tags != "") {
       e.preventDefault();
+      e.stopPropagation();
       setNewRecipe({
         ...newRecipe,
-        categories: [...newRecipe.categories, tags]
+        categories: [...newRecipe.categories, tags.tags]
       });
       setTags({ tags: "" });
       document.getElementById("taginput").value = "";
@@ -132,7 +142,6 @@ const NewRecipe = props => {
             placeholder="Title:"
             onChange={handleChange}
           />
-
           <InputBox
             type="text"
             name="source"
@@ -140,53 +149,21 @@ const NewRecipe = props => {
             placeholder="Author:"
             onChange={handleChange}
           />
-          <form onSubmit={onSubmitIngredient}>
-            <IngredFormSet>
-              <InputBox
-                id="ingredientinput"
-                type="text"
-                name="ingredients"
-                value={ingredients.ingredients}
-                placeholder="ingredient:"
-                onChange={handleIngredient}
-              />
-              <BtnClick>Add Ingredient!</BtnClick>
-            </IngredFormSet>
-          </form>
-          {/* <form onSubmit={onSubmitIngredient}>
-            <IngredFormSet>
-              <legend>Ingredients</legend>
-              <InputBox
-                id="ingredientinput"
-                type="text"
-                name="ingredient"
-                value={newRecipe.ingredients.ingredient}
-                placeholder="Ingredient"
-                onChange={handleIngredient}
-              />
-              <InputBox
-                id="quantityinput"
-                type="text"
-                name="quantity"
-                value={newRecipe.ingredients.quantity}
-                placeholder="Amount:"
-                onChange={handleIngredient}
-              />
-              <InputBox
-                id="unitinput"
-                type="text"
-                name="unit"
-                value={newRecipe.ingredients.unit}
-                placeholder="Unit:"
-                onChange={handleIngredient}
-              />
-              <Space />
-              <BtnClick>Add Ingredient</BtnClick>
-              <Space />
-            </IngredFormSet>
-          </form> */}
-          {newRecipe.ingredients.slice(0).map(item => (
-            <p key={item.ingredients}>{item.ingredients}</p>
+          <IngredFormSet>
+            <InputBox
+              id="ingredientinput"
+              type="text"
+              name="ingredients"
+              value={ingredients.ingredients}
+              placeholder="ingredient:"
+              onChange={handleIngredient}
+            />
+            <BtnClick type="button" onClick={Ingredient}>
+              Add Ingredient!
+            </BtnClick>
+          </IngredFormSet>
+          {newRecipe.ingredients.map(item => (
+            <p key={item}>{item}</p>
           ))}
           <InputArea
             type="textarea"
@@ -195,21 +172,21 @@ const NewRecipe = props => {
             placeholder="Instructions:"
             onChange={handleChange}
           />
-          <form onSubmit={onSubmitTag}>
-            <IngredFormSet>
-              <InputBox
-                id="taginput"
-                type="text"
-                name="tags"
-                value={tags.tags}
-                placeholder="Tag:"
-                onChange={handleTags}
-              />
-              <BtnClick>Add Tag!</BtnClick>
-            </IngredFormSet>
-          </form>
+          <IngredFormSet>
+            <InputBox
+              id="taginput"
+              type="text"
+              name="tags"
+              value={tags.tags}
+              placeholder="Tag:"
+              onChange={handleTags}
+            />
+            <BtnClick type="button" onClick={Tag}>
+              Add Tag!
+            </BtnClick>
+          </IngredFormSet>
           {newRecipe.categories.map(item => (
-            <span key={item.tags}>{item.tags}, </span>
+            <span key={item}>{item}, </span>
           ))}
           <Space />
           <BtnClick>Add Recipe!</BtnClick>
