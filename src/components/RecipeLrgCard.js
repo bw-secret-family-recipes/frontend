@@ -10,7 +10,7 @@ const CardContainer = styled.div`
     background: #3F043C;
     flex-direction: column;
     width: 250px;
-    height: 400px;
+    height: 100%;
     margin: 5%
     border-radius: 15px;
     padding: 5px;
@@ -23,7 +23,6 @@ const CardContainer = styled.div`
         min-height:150px;
         overflow:auto;
     }
-
     .card-title {
         background: url(https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=687&q=80) 100% / cover;
         h2 {
@@ -43,56 +42,24 @@ const IngredientsUL = styled.ul`
 const IngredientsLI = styled.li`
     list-style-type: square;
 `
-const ButtonContainer = styled.div`
-    justify-content: space-between;
-    padding: 5px;
-    
-`
-
-
 const EditButton = styled.button`
-    background: white;
-    padding: 5px;
-    margin-right: 10px;
-    font-size: 30px;
-    border: 3px solid black;
+    background: green;
+    color: white;
     border-radius: 15px;
 
-    &:hover{
-        background: darkgrey;
-        transition: .5s;
-    }
 `
 
 const DeleteButton = styled.button`
-    background: white;
-    padding: 5px;
-    margin-right: 10px;
-    font-size: 30px;
-    border: 3px solid black;
+    background: red;
+    color: white;
     border-radius: 15px;
-
-    &:hover{
-        background: darkgrey;
-        transition: .5s;
-    }
 `
 const SubmitButton = styled.button`
-    background: white;
-    color: orange;
-    padding: 5px;
-    margin-right: 10px;
-    width: 60px;
-    height: 55px;
-    font-size: 30px;
-    border: 3px solid black;
+    background: #3f043c;
+    color: white;
     border-radius: 15px;
-
-    &:hover{
-        background: darkgrey;
-        transition: .5s;
-    }
 `
+
 
 
 function RecipeCard({ card }) {
@@ -117,7 +84,7 @@ function RecipeCard({ card }) {
     }
 
     function handleDelete() {
-        axiosAuth.delete(`recipe/${card.id}`).then(res => console.log(res)).catch(res => console.log(res))
+        axiosAuth.delete(`api/recipe/${card.id}`).then(res => console.log(res)).catch(res => console.log(res))
 
         state.dispatch({
             type: "DELETE",
@@ -126,7 +93,7 @@ function RecipeCard({ card }) {
     }
 
     function handleSubmit() {
-        axiosAuth.put(`recipe/${card.id}`, editCard).then(res => console.log(res)).catch(res => console.log(res))
+        axiosAuth.put(`api/recipe/${card.id}`, editCard).then(res => console.log(res)).catch(res => console.log(res))
         setEditing(false)
         state.dispatch({
             type: "EDIT",
@@ -156,11 +123,10 @@ function RecipeCard({ card }) {
             <div className='instructions'>
                 <p>Instructions: <span name="instructions" onChange={handleChange} contentEditable={editing}>{card["recipe_instructions"]}</span></p>
             </div>
-            <ButtonContainer>
-                <EditButton onClick={handleEdit}>✏️</EditButton>
-                <DeleteButton onClick={handleDelete}>❌</DeleteButton>
-                {editing && <SubmitButton onClick={handleSubmit}>✉</SubmitButton>}
-            </ButtonContainer>
+
+            <EditButton onClick={handleEdit}>edit</EditButton>
+            <DeleteButton onClick={handleDelete}>delete</DeleteButton>
+            {editing && <SubmitButton onClick={handleSubmit}>submit</SubmitButton>}
         </CardContainer>
     )
 }

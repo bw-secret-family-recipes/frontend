@@ -30,16 +30,17 @@ const InputBox = styled.input`
   padding: .5em;
   margin: .5rem;
 `;
-
 const BtnClick = styled.button`
-  width: 14em;
-  height:3em;
-  margin: auto;
-  border: 1px solid #3f043c;
-  border-radius: 3px;
-  background: white;
-  color: #d85505;
+    width: 14em;
+    height: 3em;
+    margin: auto;
+    border: 1px solid #3f043c;
+    border-radius: 3px;
+    background: white;
+    color: #d85505;
 `;
+
+
 
 //props needs history
 
