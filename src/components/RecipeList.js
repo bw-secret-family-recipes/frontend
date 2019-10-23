@@ -9,9 +9,10 @@ const RecipeContainer = styled.div`
     display: flex;
     background: #f2e2ce;
     width: 100%;
-    height: 80vh;
+    min-height: 80vh;
     border-radius: 10px;
     flex-wrap:wrap;
+    justify-content:center;
 `
 
 const AddCard = styled.div`

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import axios from 'axios';
+import { Link } from "react-router-dom"
 
 const Wrap = styled.div`
   display: flex;
@@ -78,11 +79,12 @@ const Signup = (props) => {
     return (
         <Wrap>
             <MainForm onClick={handleSubmit}>
-                <h1>Sign In</h1>
+                <h1>Sign Up</h1>
                 <InputBox type='text' name='username' value='newUser.username' placeholder='Username' onChange={handleChange} />
                 <InputBox type='password' name='username' value='newUser.password' placeholder='Password' onChange={handleChange} pattern='' />
                 <InputBox type='text' name='username' value='confirmPass' placeholder='Confirm Password' onChange={handlePassword} />
                 <BtnClick>Submit</BtnClick>
+                <Link to="/login">Login</Link>
             </MainForm>
         </Wrap>
     )

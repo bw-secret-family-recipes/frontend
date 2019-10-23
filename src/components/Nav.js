@@ -12,6 +12,16 @@ const NavWrap = styled.nav`
     height: 15vh;
     padding: 1rem;
     background: #3f043c;
+
+    a{
+        text-decoration: none;
+        color: #8ec63f;
+        font-size: 2rem;
+        :hover {
+            color: #c7720f;
+            
+        }
+    }
 `;
 
 const ImgBox = styled.img`
@@ -64,6 +74,7 @@ const Nav = (props) => {
             </div>
             <LinkWrap>
                 <SearchForm></SearchForm>
+                <a href="/">Home</a>
                 <StyledLink to="/dashboard">Dashboard </StyledLink>
                 <StyledAnchor onClick={handleSignin}>{(signin)}</StyledAnchor>
             </LinkWrap>
