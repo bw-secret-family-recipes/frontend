@@ -54,6 +54,8 @@ const reducer = (state = {}, action = { type: "" }) => {
             }
             break
         case "UPDATE_SHOW":
+            // state.recipes = JSON.parse(localStorage.getItem("recipes")) || state.recipes
+
             return {
                 ...state,
                 "show recipes": [

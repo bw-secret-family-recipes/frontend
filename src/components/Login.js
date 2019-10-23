@@ -45,7 +45,7 @@ const BtnClick = styled.button`
 
 const Login = (props) => {
 
-    const state = useContext(Context)
+    const ctx = useContext(Context)
 
     const [user, setUser] = useState({
         username: "admin", //remove after testing 
@@ -58,7 +58,7 @@ const Login = (props) => {
         localStorage.setItem("token", "asd") //remove later
         props.history.push("/dashboard") //remove later
 
-        state.dispatch({ // delete when backend is  up
+        ctx.dispatch({ // delete when backend is  up
             type: "ADD",
             payload: recipe
         })
@@ -68,7 +68,7 @@ const Login = (props) => {
             props.history.push("/dashboard")
 
             axiosAuth.get("recipes/").then(res => {
-                state.dispatch({
+                ctx.dispatch({
                     type: "INIT",
                     payload: res
                 })
@@ -77,8 +77,6 @@ const Login = (props) => {
             })
 
         }).catch(err => console.log(err))
-
-
 
     }
 

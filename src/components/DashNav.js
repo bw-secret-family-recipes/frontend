@@ -27,10 +27,18 @@ const WrapBox = styled.div`
 
 const DashNav = () => {
 
-    const state = useContext(Context)
+    const ctx = useContext(Context)
 
     function handleClick(keyword) {
+        let filtered = ctx.state.recipes.filter(rec => {
+            if (keyword == "new recipe") return true;
+            return rec.categories.map(v => v.toLowerCase()).includes(keyword)
+        })
 
+        ctx.dispatch({
+            type: "UPDATE_SHOW",
+            payload: filtered
+        })
     }
 
     return (
