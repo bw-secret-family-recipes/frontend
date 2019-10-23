@@ -29,6 +29,7 @@ const CardContainer = styled.div`
         h2 {
             background: #0005;
             color: white;
+            padding:15px 0;
         }
     }
 `
@@ -37,6 +38,7 @@ const CardTitle = styled.h2`
     justify-content: center;
 `
 const IngredientsUL = styled.ul`
+    font-size: 22px;
     height:auto;
     background: #D85505;
 `
@@ -117,7 +119,7 @@ function RecipeCard({ card }) {
     }
 
     function handleDelete() {
-        axiosAuth.delete(`recipe/${card.id}`).then(res => console.log(res)).catch(res => console.log(res))
+        axiosAuth().delete(`recipe/${card.id}`).then(res => console.log(res)).catch(res => console.log(res))
 
         state.dispatch({
             type: "DELETE",
@@ -126,7 +128,7 @@ function RecipeCard({ card }) {
     }
 
     function handleSubmit() {
-        axiosAuth.put(`recipe/${card.id}`, editCard).then(res => console.log(res)).catch(res => console.log(res))
+        axiosAuth().put(`recipe/${card.id}`, editCard).then(res => console.log(res)).catch(res => console.log(res))
         setEditing(false)
         state.dispatch({
             type: "EDIT",
