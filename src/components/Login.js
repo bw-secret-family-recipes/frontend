@@ -48,12 +48,13 @@ const Login = (props) => {
     const ctx = useContext(Context)
 
     const [user, setUser] = useState({
-        username: "admin", //remove after testing 
-        password: "password" //remove after testing
+        username: "user1", //remove after testing 
+        password: "pass" //remove after testing
     });
 
     function handleSubmit(e) {
         e.preventDefault();
+
 
         localStorage.setItem("token", "asd") //remove later
         props.history.push("/dashboard") //remove later
@@ -62,6 +63,7 @@ const Login = (props) => {
             type: "INIT",
             payload: recipe
         })
+
 
         axiosAuth().post("/auth/login", user).then(res => {
             localStorage.setItem("token", res);
