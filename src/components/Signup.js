@@ -72,6 +72,7 @@ const Signup = (props) => {
             axiosAuth().post('/auth/register', newUser)
             .then(response => {
                 console.log(response)
+                props.history.push('/login');
             })
             .catch(err => console.log(err))
         }
