@@ -58,3 +58,15 @@
   justify-content: center;
 
 }
+
+.lime601 {
+  color: #8ec63f;
+  border-radius: 5px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.toggling {
+  width: 80%;
+}
