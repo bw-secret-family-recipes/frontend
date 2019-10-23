@@ -6,16 +6,17 @@ import SearchForm from "./SearchForm"
 
 
 const NavWrap = styled.nav`
+    box-sizing:border-box;
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: space-between;
-    height: 15vh;
+    height: 100%;
     padding: 1rem;
     background: #3f043c;
+    width:100%;
     a {
         text-decoration: none;
         color: #8ec63f;
-        font-size: 1.2rem;
         :hover {
             color: #c7720f;
         }
@@ -37,8 +38,8 @@ const LinkWrap = styled.div`
 const StyledLink = styled.a`
     text-decoration: none;
     color: #8ec63f;
-    font-size: 1em;
-    margin-right: 20%;
+    font-size: 1.2rem;
+    margin-right:10px;
     :hover {
         color: #c7720f;
     }
@@ -56,7 +57,7 @@ const StyleSignBtn = styled.button`
     border: none;
     background: #3f043c;
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     :hover {
         color: #c7720f;
     }
@@ -80,10 +81,11 @@ const NavLrg = (props) => {
                 <ImgBox src={logo} alt='Secrect Family Recipes' />
             </div>
             <LinkWrap>
+
+                <Search>
+                    <i className="material-icons lime600 md-36"><SearchForm />search</i>
+                </Search>
                 <StyledLink href="/">Home</StyledLink>
-            <Search>
-            <i class="material-icons lime600 md-36"><SearchForm />search</i>
-            </Search>
                 <Divide>|</Divide>
                 <StyleSignBtn onClick={handleSignin}>{(signin)}</StyleSignBtn>
             </LinkWrap>

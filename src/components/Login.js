@@ -1,9 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styled from "styled-components";
-import axios from "axios";
 import { recipe } from "../data"
+<<<<<<< HEAD
 import { Context, axiosAuth} from "../utils"
 
+=======
+import axios from "axios"
+import { Context, axiosAuth } from "../utils"
+>>>>>>> ff27d777d87b9b7a872d321656bdd7f95e007e47
 import { Link } from "react-router-dom"
 
 const Wrap = styled.div`
@@ -62,13 +66,19 @@ const Login = (props) => {
         axiosAuth().post("/auth/login", user).then(res => {
             localStorage.setItem("token", res);
             props.history.push("/dashboard")
+
+            axiosAuth.get("recipes/").then(res => {
+                state.dispatch({
+                    type: "INIT",
+                    payload: res
+                })
+            }).catch(res => {
+                console.log(res)
+            })
+
         }).catch(err => console.log(err))
 
-        //initialize data
-        state.dispatch({
-            type: "ADD",
-            payload: recipe
-        })
+
 
     }
 

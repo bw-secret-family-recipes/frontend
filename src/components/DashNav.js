@@ -5,8 +5,6 @@ const Wrap = styled.div`
     display: flex;
     flex-direction: column;
     width: 15%;
-    height: 100%;
-    position: fixed;
     align-items: center;
     background: #d85505;
 `;
@@ -15,6 +13,7 @@ const WrapBox = styled.div`
     align-items: center;
     width: 100%;
     border-bottom: 2px solid #8ec63f;
+    padding:20px 10px;
     h4 {
         margin-left: 5%;
         width: 65%;
