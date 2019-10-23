@@ -32,6 +32,7 @@ const CardContainer = styled.div`
             padding:15px 0;
         }
     }
+    
 `
 const CardTitle = styled.h2`
     display: flex;
@@ -47,16 +48,18 @@ const IngredientsLI = styled.li`
 `
 const ButtonContainer = styled.div`
     justify-content: space-between;
-    padding: 5px;
+    padding: 3px;
+    margin: 0 auto;
     
 `
 
 
-const EditButton = styled.button`
+const Button = styled.button`
     background: white;
-    padding: 5px;
+    width: 45px;
+    padding: 3px;
     margin-right: 10px;
-    font-size: 30px;
+    font-size: 25px;
     border: 3px solid black;
     border-radius: 15px;
 
@@ -66,11 +69,13 @@ const EditButton = styled.button`
     }
 `
 
-const DeleteButton = styled.button`
+
+const FullscreenButton = styled.button`
     background: white;
-    padding: 5px;
+    width: 45px;
+    padding: 3px;
     margin-right: 10px;
-    font-size: 30px;
+    font-size: 25px;
     border: 3px solid black;
     border-radius: 15px;
 
@@ -78,24 +83,11 @@ const DeleteButton = styled.button`
         background: darkgrey;
         transition: .5s;
     }
-`
-const SubmitButton = styled.button`
-    background: white;
-    color: orange;
-    padding: 5px;
-    margin-right: 10px;
-    width: 60px;
-    height: 55px;
-    font-size: 30px;
-    border: 3px solid black;
-    border-radius: 15px;
-
-    &:hover{
-        background: darkgrey;
-        transition: .5s;
+    
+    .toggling {
+        width: 80%;
     }
 `
-
 
 function RecipeCard({ card }) {
 
@@ -103,6 +95,7 @@ function RecipeCard({ card }) {
 
     const [editing, setEditing] = useState(false);
     const [editCard, setEditCard] = useState(card);
+    const [cardSize, setCardSize] = useState(false);
 
 
     function handleChange(e) {
@@ -132,6 +125,12 @@ function RecipeCard({ card }) {
                     })
     }
 
+    function handleFullscreen() {
+        setCardSize(s => !s)  
+        // var element = document.getElementsByClassName('toggling')
+        // element.classList.toggle('toggling');
+    }
+
     function handleSubmit() {
         dispatch({
             type: "EDIT",
@@ -141,9 +140,10 @@ function RecipeCard({ card }) {
         setEditing(false)
     }
 
+    
 
     return (
-        <CardContainer className="no-scroll">
+        <CardContainer className= {`no-scroll ${(cardSize) ? 'toggling' : ''}`} onChange = {handleFullscreen}>
             <div className='card-title'>
                 <CardTitle name="recipe_name" onChange={handleChange} contentEditable={editing} className={(editing ? "edit" : "")}>{card["recipe_name"]}</CardTitle>
             </div>
@@ -164,9 +164,11 @@ function RecipeCard({ card }) {
                 <p>Instructions: <span name="instructions" onChange={handleChange} contentEditable={editing} className={(editing ? "edit" : "")}> {card["recipe_instructions"]}</span></p>
             </div>
             <ButtonContainer>
-                <EditButton onClick={handleEdit}>✏️</EditButton>
-                <DeleteButton onClick={handleDelete}>❌</DeleteButton>
-                {editing && <SubmitButton onClick={handleSubmit}>✉</SubmitButton>}
+                <Button onClick={handleEdit}><i className = 'material-icons lime601 md-36'>edit</i></Button>
+                <Button onClick={handleDelete}><i className = 'material-icons lime601 md-36'>delete</i></Button>
+                <FullscreenButton onClick = {handleFullscreen}><i className = 'material-icons lime601 md-36'>photo_size_select_small</i></FullscreenButton>
+                {editing && <Button onClick={handleSubmit}><i className = 'material-icons lime601 md-36'>check_circle_outline</i></Button>}
+                
             </ButtonContainer>
         </CardContainer>
     )
