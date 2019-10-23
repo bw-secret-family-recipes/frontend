@@ -44,6 +44,13 @@ const AddCard = styled.div`
 
 function RecipeList(props) {
   const ctx = useContext(Context);
+  
+    //the toggles to display the addCard and NewRecipe form
+    const AddRecipe = () => {
+        setAddRecipeState(<NewRecipe />);
+      };
+  
+  
   //declare the addCard
   const addCard = (
     <AddCard onClick={AddRecipe}>
@@ -51,10 +58,7 @@ function RecipeList(props) {
       <p>+</p>
     </AddCard>
   );
-  //the toggles to display the addCard and NewRecipe form
-  const AddRecipe = () => {
-    setAddRecipeState(<NewRecipe />);
-  };
+
 
   const DisplayRecipe = () => {
     setAddRecipeState(addCard);
