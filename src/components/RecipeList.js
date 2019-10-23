@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import RecipeCard from "./RecipeCard";
 import NewRecipe from "./NewRecipeForm";
 import { Context } from "../utils";
-
 const RecipeContainer = styled.div`
     width: 85%;
     display: flex;
@@ -29,28 +28,25 @@ const AddCard = styled.div`
   position: relative;
   margin-right: 50px;
   margin-top: 50px;
-
   h1 {
     position: absolute;
     top: 20px;
     font-size: 1.4rem;
   }
-
   &:hover {
     background: #fff9;
     color: gray;
   }
 `;
-
 function RecipeList(props) {
   const ctx = useContext(Context);
-  
-    //the toggles to display the addCard and NewRecipe form
-    const AddRecipe = () => {
-        setAddRecipeState(<NewRecipe />);
-      };
-  
-  
+
+  //the toggles to display the addCard and NewRecipe form
+  const AddRecipe = () => {
+    setAddRecipeState(<NewRecipe />);
+  };
+
+
   //declare the addCard
   const addCard = (
     <AddCard onClick={AddRecipe}>
@@ -58,8 +54,6 @@ function RecipeList(props) {
       <p>+</p>
     </AddCard>
   );
-
-
   const DisplayRecipe = () => {
     setAddRecipeState(addCard);
   };
@@ -71,7 +65,6 @@ function RecipeList(props) {
       document.getElementById("form").addEventListener("submit", DisplayRecipe);
     }
   });
-
   return (
     <RecipeContainer className="no-scroll">
       {addRecipeState}
@@ -83,5 +76,4 @@ function RecipeList(props) {
     </RecipeContainer>
   );
 }
-
 export default RecipeList;

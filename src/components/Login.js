@@ -58,6 +58,11 @@ const Login = (props) => {
         localStorage.setItem("token", "asd") //remove later
         props.history.push("/dashboard") //remove later
 
+        state.dispatch({ // delete when backend is  up
+            type: "ADD",
+            payload: recipe
+        })
+
         axiosAuth().post("/auth/login", user).then(res => {
             localStorage.setItem("token", res);
             props.history.push("/dashboard")
