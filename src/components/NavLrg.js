@@ -6,18 +6,17 @@ import SearchForm from "./SearchForm"
 
 
 const NavWrap = styled.nav`
+    box-sizing:border-box;
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: space-between;
-    height: 15vh;
+    height: 100%;
     padding: 1rem;
     background: #3f043c;
     width:100%;
-
     a {
         text-decoration: none;
         color: #8ec63f;
-        font-size: 2rem;
         :hover {
             color: #c7720f;
         }
@@ -31,32 +30,41 @@ const ImgBox = styled.img`
 
 const LinkWrap = styled.div`
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
+    justify-content: space-evenly;
     width: 60%;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
     text-decoration: none;
     color: #8ec63f;
-    font-size: 2rem;
+    font-size: 1.2rem;
+    margin-right:10px;
     :hover {
         color: #c7720f;
-        
     }
 `;
-const StyledAnchor = styled.span`
-    text-decoration: none;
+const Divide = styled.h2`
     color: #8ec63f;
-    font-size: 2rem;
+`;
+const Search = styled.div`
+    display: flex;
+    align-items: center;
+    margin-left: 20%;
+`;
+const StyleSignBtn = styled.button`
+    color: #8ec63f;
+    border: none;
+    background: #3f043c;
+    cursor: pointer;
+    font-size: 1.2rem;
     :hover {
         color: #c7720f;
-        
     }
 `
 
 //nav needs dashboard, receipe, search 
-const Nav = (props) => {
+const NavLrg = (props) => {
 
     let signin = localStorage.getItem("token") ? "Sign Out" : "Sign In"
 
@@ -69,16 +77,24 @@ const Nav = (props) => {
 
     return (
         <NavWrap>
-            <a href="/"> {/*add landing page link*/}
+            <div>
                 <ImgBox src={logo} alt='Secrect Family Recipes' />
-            </a>
+            </div>
             <LinkWrap>
-                <SearchForm></SearchForm>
-                <a href="/">Home</a>
-                <StyledLink to="/dashboard">Dashboard </StyledLink>
-                <StyledAnchor onClick={handleSignin}>{(signin)}</StyledAnchor>
+
+                <Search>
+                    <i className="material-icons lime600 md-36"><SearchForm />search</i>
+                </Search>
+                <StyledLink href="/">Home</StyledLink>
+                <Divide>|</Divide>
+                <StyleSignBtn onClick={handleSignin}>{(signin)}</StyleSignBtn>
             </LinkWrap>
         </NavWrap>
     );
 }
-export default Nav
+export default NavLrg
+
+/*
+removed parts
+- returned in NavWrap <StyledLink to="/dashboard">Dashboard </StyledLink>
+*/
