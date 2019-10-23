@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap');
-
 * {
 
   margin: 0;
   padding: 0;
+}
+
+.instructions {
+  font-size: 20px;
 }
 
 .App {
@@ -56,8 +58,8 @@
   display: flex;
   align-content: center;
   justify-content: center;
-
 }
+
 
 .lime601 {
   color: #8ec63f;
@@ -69,4 +71,10 @@
 
 .toggling {
   width: 80%;
+}
+  
+.edit {
+  background: #ebedf0 !important;
+  border: 1px solid #444 !important;
+  color: steelblue !important;
 }
