@@ -48,8 +48,8 @@ const Login = (props) => {
     const ctx = useContext(Context)
 
     const [user, setUser] = useState({
-        username: "admin", //remove after testing 
-        password: "password" //remove after testing
+        username: "user1", //remove after testing 
+        password: "pass" //remove after testing
     });
 
     function handleSubmit(e) {

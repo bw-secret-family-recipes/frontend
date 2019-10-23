@@ -50,14 +50,20 @@ const reducer = (state = {}, action = { type: "" }) => {
             }
             break
         case "DELETE":
-            state.recipes = JSON.parse(localStorage.getItem("recipes")) || []
+            // state.recipes = JSON.parse(localStorage.getItem("recipes")) || []
+
+            localStorage.setItem("show recipes", JSON.stringify([
+                ...state.recipes.filter(v => { return v.id != action.payload})
+            ]))
+
             return {
                 ...state,
                 recipes: [
-                    ...state.cards.filter(v => {
-                        return v.id != action.payload.id
-                    })
-                ]
+                    ...state.recipes.filter(v => { return v.id != action.payload})
+                ],
+                "show recipes": [
+                    ...state.recipes.filter(v => { return v.id != action.payload})
+                ]    
             }
             break
         case "UPDATE_SHOW":
