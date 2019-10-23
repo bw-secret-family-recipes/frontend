@@ -56,8 +56,8 @@ const Login = (props) => {
     function handleSubmit(e) {
         e.preventDefault();
 
-        //localStorage.setItem("token", "asd") //remove later
-        //props.history.push("/dashboard") //remove later
+        localStorage.setItem("token", "asd") //remove later
+        props.history.push("/dashboard") //remove later
 
         axios.post("https://secret-family-recipes-backend.herokuapp.com/api/auth/login", user).then(res => {
             localStorage.setItem("token", res);

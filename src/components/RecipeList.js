@@ -6,24 +6,15 @@ import NewRecipe from "./NewRecipeForm";
 import { Context } from "../utils";
 
 const RecipeContainer = styled.div`
-    width: 100%;
+    width: 85%;
     display: flex;
     background: #f2e2ce
-    min-height: 80vh;
+    height: 80vh;
     flex-wrap:wrap;
     justify-content: center;
+    overflow:auto;
 `;
-// ======= Master
-//   padding: 100px 0;
-//   display: flex;
-//   background: #f2e2ce;
-//   width: 100%;
-//   height: 80vh;
-//   border-radius: 10px;
-//   flex-wrap: wrap;
-//   //justify-content:center;
-// `;
-  
+
 
 const AddCard = styled.div`
   width: 250px;
@@ -72,7 +63,7 @@ function RecipeList(props) {
   );
 
   return (
-    <RecipeContainer>
+    <RecipeContainer className="no-scroll">
       {addRecipeState}
       {ctx.state["show recipes"].map(item => (
         <div key={item.id}>
