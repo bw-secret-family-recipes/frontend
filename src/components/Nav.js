@@ -69,9 +69,9 @@ const Nav = (props) => {
 
     return (
         <NavWrap>
-            <div>
+            <a href="/"> {/*add landing page link*/}
                 <ImgBox src={logo} alt='Secrect Family Recipes' />
-            </div>
+            </a>
             <LinkWrap>
                 <SearchForm></SearchForm>
                 <a href="/">Home</a>

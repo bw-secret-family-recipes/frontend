@@ -10,7 +10,7 @@ const CardContainer = styled.div`
     background: #3F043C;
     flex-direction: column;
     width: 250px;
-    height: 100%;
+    height: 400px;
     margin: 5%
     border-radius: 15px;
     padding: 5px;
