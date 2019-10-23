@@ -23,6 +23,14 @@ const CardContainer = styled.div`
         min-height:150px;
         overflow:auto;
     }
+
+    .card-title{
+        background:url(https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=687&q=80) 100% / cover;
+        h2{
+            background:#0005;
+            color:white;
+        }
+    }
 `
 const CardTitle = styled.h2`
     display: flex;
@@ -35,24 +43,56 @@ const IngredientsUL = styled.ul`
 const IngredientsLI = styled.li`
     list-style-type: square;
 `
+const ButtonContainer = styled.div`
+    justify-content: space-between;
+    padding: 5px;
+    
+`
+
+
 const EditButton = styled.button`
-    background: green;
-    color: white;
+    background: white;
+    padding: 5px;
+    margin-right: 10px;
+    font-size: 30px;
+    border: 3px solid black;
     border-radius: 15px;
 
+    &:hover{
+        background: darkgrey;
+        transition: .5s;
+    }
 `
 
 const DeleteButton = styled.button`
-    background: red;
-    color: white;
+    background: white;
+    padding: 5px;
+    margin-right: 10px;
+    font-size: 30px;
+    border: 3px solid black;
     border-radius: 15px;
+
+    &:hover{
+        background: darkgrey;
+        transition: .5s;
+    }
 `
 const SubmitButton = styled.button`
-    background: #3f043c;
-    color: white;
+    background: white;
+    color: orange;
+    padding: 5px;
+    margin-right: 10px;
+    width: 60px;
+    height: 55px;
+    font-size: 30px;
+    border: 3px solid black;
     border-radius: 15px;
-`
 
+    &:hover{
+        background: darkgrey;
+        transition: .5s;
+    }
+`
 
 
 function RecipeCard({ card }) {
@@ -96,14 +136,14 @@ function RecipeCard({ card }) {
 
 
     return (
-        <CardContainer>
+        <CardContainer className="no-scroll">
             <div className='card-title'>
                 <CardTitle name="recipe_name" onChange={handleChange} contentEditable={editing}>{card["recipe_name"]}</CardTitle>
             </div>
             <div className='card-author'>
                 <h3>By : <span name="source" onChange={handleChange} contentEditable={editing}>{card.source}</span></h3>
             </div>
-            <div className='ingredients'>
+            <div className='ingredients no-scroll'>
                 <IngredientsUL>
                     {card.ingredients.map((v, i) => {
                         return (
@@ -116,10 +156,11 @@ function RecipeCard({ card }) {
             <div className='instructions'>
                 <p>Instructions: <span name="instructions" onChange={handleChange} contentEditable={editing}>{card["recipe_instructions"]}</span></p>
             </div>
-
-            <EditButton onClick={handleEdit}>edit</EditButton>
-            <DeleteButton onClick={handleDelete}>delete</DeleteButton>
-            {editing && <SubmitButton onClick={handleSubmit}>submit</SubmitButton>}
+            <ButtonContainer>
+                <EditButton onClick={handleEdit}>✏️</EditButton>
+                <DeleteButton onClick={handleDelete}>❌</DeleteButton>
+                {editing && <SubmitButton onClick={handleSubmit}>✉</SubmitButton>}
+            </ButtonContainer>
         </CardContainer>
     )
 }
