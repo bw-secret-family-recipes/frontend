@@ -26,9 +26,13 @@ const CardContainer = styled.div`
 
     .card-title {
         background: url(https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=687&q=80) 100% / cover;
+        border-radius: 15px 15px 0 0;
+        border: 2px solid #3f043c;
         h2 {
             background: #0005;
             color: white;
+            padding:15px 0;
+            
         }
     }
 `
@@ -98,7 +102,7 @@ const SubmitButton = styled.button`
 
 function RecipeCard({ card }) {
 
-    const { state } = useContext(Context)
+    const { state, dispatch } = useContext(Context)
 
     const [editing, setEditing] = useState(false);
     const [editCard, setEditCard] = useState(card);
@@ -118,44 +122,44 @@ function RecipeCard({ card }) {
     }
 
     function handleDelete() {
-        axiosAuth.delete(`recipe/${card.id}`).then(res => console.log(res)).catch(res => console.log(res))
+        axiosAuth().delete(`recipe/${card.id}`).then(res => console.log(res)).catch(res => console.log(res))
 
-        state.dispatch({
+        dispatch({
             type: "DELETE",
             payload: card.id
         })
     }
 
     function handleSubmit() {
-        axiosAuth.put(`recipe/${card.id}`, editCard).then(res => console.log(res)).catch(res => console.log(res))
-        setEditing(false)
-        state.dispatch({
+        dispatch({
             type: "EDIT",
             payload: editCard
         })
+        //axiosAuth().put(`recipe/${card.id}`, editCard).then(res => console.log(res)).catch(res => console.log(res))
+        setEditing(false)
     }
 
 
     return (
         <CardContainer className="no-scroll">
             <div className='card-title'>
-                <CardTitle name="recipe_name" onChange={handleChange} contentEditable={editing}>{card["recipe_name"]}</CardTitle>
+                <CardTitle name="recipe_name" onChange={handleChange} contentEditable={editing} className={(editing ? "edit" : "")}>{card["recipe_name"]}</CardTitle>
             </div>
             <div className='card-author'>
-                <h3>By : <span name="source" onChange={handleChange} contentEditable={editing}>{card.source}</span></h3>
+                <h3>By : <span name="source" onChange={handleChange} contentEditable={editing} className={(editing ? "edit" : "")}>{card.source}</span></h3>
             </div>
             <div className='ingredients no-scroll'>
                 <IngredientsUL>
                     {card.ingredients.map((v, i) => {
                         return (
-                            <IngredientsLI key={i} name="ingredients" onChange={handleChange} contentEditable={editing}>{v}</IngredientsLI>
+                            <IngredientsLI key={i} name="ingredients" onChange={handleChange} contentEditable={editing} className={(editing ? "edit" : "")}>{v}</IngredientsLI>
                         )
                     })}
 
                 </IngredientsUL>
             </div>
             <div className='instructions'>
-                <p>Instructions: <span name="instructions" onChange={handleChange} contentEditable={editing}>{card["recipe_instructions"]}</span></p>
+                <p>Instructions: <span name="instructions" onChange={handleChange} contentEditable={editing} className={(editing ? "edit" : "")}> {card["recipe_instructions"]}</span></p>
             </div>
             <ButtonContainer>
                 <EditButton onClick={handleEdit}>✏️</EditButton>

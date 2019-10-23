@@ -4,9 +4,14 @@ const reducer = (state = {}, action = { type: "" }) => {
     switch (action.type) {
         case "INIT":
             localStorage.setItem("recipes", JSON.stringify(action.payload))
+            localStorage.setItem("show recipes", JSON.stringify(action.payload))
             return {
-                ...state,
-                ...action.payload
+                recipes: [
+                    ...action.payload
+                ],
+                "show recipes": [
+                    ...action.payload
+                ]
             }
             break;
         case "ADD":
@@ -34,6 +39,7 @@ const reducer = (state = {}, action = { type: "" }) => {
             }
             break;
         case "EDIT":
+            state.recipes = JSON.parse(localStorage.getItem("recipes")) || []
             return {
                 ...state,
                 recipes: [
@@ -44,6 +50,7 @@ const reducer = (state = {}, action = { type: "" }) => {
             }
             break
         case "DELETE":
+            state.recipes = JSON.parse(localStorage.getItem("recipes")) || []
             return {
                 ...state,
                 recipes: [
@@ -54,7 +61,7 @@ const reducer = (state = {}, action = { type: "" }) => {
             }
             break
         case "UPDATE_SHOW":
-            // state.recipes = JSON.parse(localStorage.getItem("recipes")) || state.recipes
+            state.recipes = JSON.parse(localStorage.getItem("recipes")) || []
 
             return {
                 ...state,
