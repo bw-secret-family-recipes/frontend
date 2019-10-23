@@ -70,19 +70,19 @@ const NewRecipe = props => {
     ingredients: [],
     recipe_instructions: ""
   });
-  //these states are held seperately so they can be put into the array
+  //these states are held seperately so they can be put into the arrays
   const [ingredients, setIngredients] = useState({
     ingredients: ""
   });
   const [tags, setTags] = useState({
     tags: ""
   });
-
+  //handles state changes for the newRecipe object
   const handleChange = e => {
     e.preventDefault();
     setNewRecipe({ ...newRecipe, [e.target.name]: e.target.value });
   };
-
+  //handles state changes for the ingredients and tags arrays before adding them to the newRecipe Object
   const handleIngredient = e => {
     e.preventDefault();
     setIngredients({ ...ingredients, [e.target.name]: e.target.value });
@@ -91,18 +91,20 @@ const NewRecipe = props => {
     e.preventDefault();
     setTags({ ...tags, [e.target.name]: e.target.value });
   };
-
+  //adds newRecipe to the reducer and will eventually make an api call
   const onSubmit = e => {
     e.preventDefault();
-    // axiosAuth()
-    //   .post("/recipe", newRecipe)
-    //   .then(res => console.log(res.data));
-    state.dispatch({
-      type: "ADD",
-      payload: [newRecipe]
-    });
+    if (document.getElementById("recipe_instructions").value != "") {
+      // axiosAuth()
+      //   .post("/recipe", newRecipe)
+      //   .then(res => console.log(res.data));
+      state.dispatch({
+        type: "ADD",
+        payload: [newRecipe]
+      });
+    }
   };
-
+  //adds ingredients to the newRecipe ingredients array
   const Ingredient = e => {
     e.preventDefault();
     e.stopPropagation();
@@ -116,7 +118,7 @@ const NewRecipe = props => {
       console.log(newRecipe.ingredients);
     }
   };
-
+  //adds tags to the newRecipe categories array
   const Tag = e => {
     if (tags.tags != "") {
       e.preventDefault();
@@ -134,7 +136,7 @@ const NewRecipe = props => {
     <Wrap>
       <h1>Your New Recipe!</h1>
       <div>
-        <MainForm onSubmit={onSubmit}>
+        <MainForm id="form" onSubmit={onSubmit}>
           <InputBox
             type="text"
             name="recipe_name"
@@ -166,6 +168,7 @@ const NewRecipe = props => {
             <p key={item}>{item}</p>
           ))}
           <InputArea
+            id="recipe_instructions"
             type="textarea"
             name="recipe_instructions"
             value={newRecipe.recipe_instructions}
@@ -189,7 +192,7 @@ const NewRecipe = props => {
             <span key={item}>{item}, </span>
           ))}
           <Space />
-          <BtnClick>Add Recipe!</BtnClick>
+          <BtnClick id="submitbutton">Add Recipe!</BtnClick>
         </MainForm>
       </div>
     </Wrap>

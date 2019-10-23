@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import RecipeCard from "./RecipeCard";
@@ -15,8 +15,6 @@ const RecipeContainer = styled.div`
   flex-wrap: wrap;
   //justify-content:center;
 `;
-   
-    
 
 const AddCard = styled.div`
   width: 250px;
@@ -48,21 +46,29 @@ const AddCard = styled.div`
 
 function RecipeList(props) {
   const ctx = useContext(Context);
-
-  const AddRecipe = () => {
-    setAddRecipeState(
-      <>
-        <NewRecipe></NewRecipe>
-      </>
-    );
-  };
-
-  const [addRecipeState, setAddRecipeState] = useState(
+  //declare the addCard
+  const addCard = (
     <AddCard onClick={AddRecipe}>
       <h1>Add New Recipe</h1>
       <p>+</p>
     </AddCard>
   );
+  //the toggles to display the addCard and NewRecipe form
+  const AddRecipe = () => {
+    setAddRecipeState(<NewRecipe />);
+  };
+
+  const DisplayRecipe = () => {
+    setAddRecipeState(addCard);
+  };
+  //everything is declared before state so the default state can call it properly
+  const [addRecipeState, setAddRecipeState] = useState(addCard);
+  //sets an event listener on rerender so we can toggle back
+  useEffect(() => {
+    if (document.getElementById("form")) {
+      document.getElementById("form").addEventListener("submit", DisplayRecipe);
+    }
+  });
 
   return (
     <RecipeContainer>
