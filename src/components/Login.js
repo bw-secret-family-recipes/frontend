@@ -41,7 +41,6 @@ const BtnClick = styled.button`
 `;
 
 
-
 //props needs history
 
 const Login = (props) => {
@@ -59,7 +58,7 @@ const Login = (props) => {
         localStorage.setItem("token", "asd") //remove later
         props.history.push("/dashboard") //remove later
 
-        axios.post("https://secret-family-recipes-backend.herokuapp.com/api/auth/login", user).then(res => {
+        axiosAuth().post("/auth/login", user).then(res => {
             localStorage.setItem("token", res);
             props.history.push("/dashboard")
 
