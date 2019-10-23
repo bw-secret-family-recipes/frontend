@@ -1,13 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styled from "styled-components";
 import { recipe } from "../data"
-<<<<<<< HEAD
-import { Context, axiosAuth} from "../utils"
-
-=======
 import axios from "axios"
 import { Context, axiosAuth } from "../utils"
->>>>>>> ff27d777d87b9b7a872d321656bdd7f95e007e47
 import { Link } from "react-router-dom"
 
 const Wrap = styled.div`
