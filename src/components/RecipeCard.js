@@ -70,8 +70,11 @@ const DeleteButton = styled.button`
 `
 const SubmitButton = styled.button`
     background: white;
+    color: orange;
     padding: 5px;
     margin-right: 10px;
+    width: 60px;
+    height: 55px;
     font-size: 30px;
     border: 3px solid black;
     border-radius: 15px;
@@ -147,7 +150,7 @@ function RecipeCard({ card }) {
             <ButtonContainer>
                 <EditButton onClick={handleEdit}>✏️</EditButton>
                 <DeleteButton onClick={handleDelete}>❌</DeleteButton>
-                {editing && <SubmitButton onClick={handleSubmit}>submit</SubmitButton>}
+                {editing && <SubmitButton onClick={handleSubmit}>✉</SubmitButton>}
             </ButtonContainer>
         </CardContainer>
     )
