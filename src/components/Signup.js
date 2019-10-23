@@ -51,12 +51,8 @@ const Signup = (props) => {
     })
 
     const handlePassword = e => {
+        e.preventDefault();
         setConfirmPass(e.target.value);
-        if (newUser.password !== confirmPass) {
-            // alert('Passwords Do Not Match');
-        } else {
-
-        }
     }
 
     const handleChange = e => {

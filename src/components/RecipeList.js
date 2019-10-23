@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import RecipeCard from "./RecipeCard";
 import NewRecipe from "./NewRecipeForm";
 import { Context } from "../utils";
-
 const RecipeContainer = styled.div`
     width: 85%;
     display: flex;
@@ -29,35 +28,23 @@ const AddCard = styled.div`
   position: relative;
   margin-right: 50px;
   margin-top: 50px;
-
   h1 {
     position: absolute;
     top: 20px;
     font-size: 1.4rem;
   }
-
   &:hover {
     background: #fff9;
     color: gray;
   }
 `;
-
-
-//the toggles to display the addCard and NewRecipe form
-
-const AddRecipe = () => {
-  setAddRecipeState(<NewRecipe />);
-};
-
-
 function RecipeList(props) {
   const ctx = useContext(Context);
 
-
-
-  //everything is declared before state so the default state can call it properly
-  const [addRecipeState, setAddRecipeState] = useState(addCard);
-  //sets an event listener on rerender so we can toggle back
+  //the toggles to display the addCard and NewRecipe form
+  const AddRecipe = () => {
+    setAddRecipeState(<NewRecipe />);
+  };
 
 
   //declare the addCard
@@ -67,19 +54,17 @@ function RecipeList(props) {
       <p>+</p>
     </AddCard>
   );
-
-
-
   const DisplayRecipe = () => {
     setAddRecipeState(addCard);
   };
-
+  //everything is declared before state so the default state can call it properly
+  const [addRecipeState, setAddRecipeState] = useState(addCard);
+  //sets an event listener on rerender so we can toggle back
   useEffect(() => {
     if (document.getElementById("form")) {
       document.getElementById("form").addEventListener("submit", DisplayRecipe);
     }
   });
-
   return (
     <RecipeContainer className="no-scroll">
       {addRecipeState}
@@ -91,5 +76,4 @@ function RecipeList(props) {
     </RecipeContainer>
   );
 }
-
 export default RecipeList;
