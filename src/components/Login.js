@@ -45,25 +45,32 @@ const BtnClick = styled.button`
 
 const Login = (props) => {
 
-    const state = useContext(Context)
+    const ctx = useContext(Context)
 
     const [user, setUser] = useState({
-        username: "admin", //remove after testing 
-        password: "password" //remove after testing
+        username: "user1", //remove after testing 
+        password: "pass" //remove after testing
     });
 
     function handleSubmit(e) {
         e.preventDefault();
 
+
         localStorage.setItem("token", "asd") //remove later
         props.history.push("/dashboard") //remove later
+
+        ctx.dispatch({ // delete when backend is  up
+            type: "INIT",
+            payload: recipe
+        })
+
 
         axiosAuth().post("/auth/login", user).then(res => {
             localStorage.setItem("token", res);
             props.history.push("/dashboard")
 
             axiosAuth.get("recipes/").then(res => {
-                state.dispatch({
+                ctx.dispatch({
                     type: "INIT",
                     payload: res
                 })
@@ -72,8 +79,6 @@ const Login = (props) => {
             })
 
         }).catch(err => console.log(err))
-
-
 
     }
 

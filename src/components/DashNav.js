@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { Context } from "../utils"
 
 const Wrap = styled.div`
     display: flex;
@@ -9,6 +10,9 @@ const Wrap = styled.div`
     background: #d85505;
 `;
 const WrapBox = styled.div`
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    cursor:pointer;
     display: flex;
     align-items: center;
     width: 100%;
@@ -25,31 +29,45 @@ const WrapBox = styled.div`
 
 const DashNav = () => {
 
+    const ctx = useContext(Context)
+
+    function handleClick(keyword) {
+        let filtered = ctx.state.recipes.filter(rec => {
+            if (keyword == "new recipe" || keyword == "sort") return true;
+            return rec.categories.map(v => v.toLowerCase()).includes(keyword)
+        })
+
+        ctx.dispatch({
+            type: "UPDATE_SHOW",
+            payload: filtered
+        })
+    }
+
     return (
         <Wrap>
-            <WrapBox>
-                <h4>Profile</h4>
-                <i class="material-icons md-24">search</i>
-            </WrapBox>
-            <WrapBox>
+            <WrapBox onClick={() => handleClick("new recipe")}>
                 <h4>New Recipe</h4>
-                <i class="material-icons md-24">search</i>
+                <i className="material-icons md-24">search</i>
             </WrapBox>
-            <WrapBox>
+            <WrapBox onClick={() => handleClick("sort")}>
+                <h4>Sort</h4>
+                <i className="material-icons md-24">search</i>
+            </WrapBox>
+            <WrapBox onClick={() => handleClick("breakfast")}>
                 <h4>BreakFast</h4>
-                <i class="material-icons md-24">search</i>
+                <i className="material-icons md-24">search</i>
             </WrapBox>
-            <WrapBox>
+            <WrapBox onClick={() => handleClick("lunch")}>
                 <h4>Lunch</h4>
-                <i class="material-icons md-24">search</i>
+                <i className="material-icons md-24">search</i>
             </WrapBox>
-            <WrapBox>
+            <WrapBox onClick={() => handleClick("dinner")}>
                 <h4>Dinner</h4>
-                <i class="material-icons md-24">search</i>
+                <i className="material-icons md-24">search</i>
             </WrapBox>
-            <WrapBox>
+            <WrapBox onClick={() => handleClick("snack")}>
                 <h4>Snacks</h4>
-                <i class="material-icons md-24">search</i>
+                <i className="material-icons md-24">search</i>
             </WrapBox>
         </Wrap>
     )
