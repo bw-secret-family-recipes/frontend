@@ -42,8 +42,24 @@ const AddCard = styled.div`
   }
 `;
 
+
+//the toggles to display the addCard and NewRecipe form
+
+const AddRecipe = () => {
+  setAddRecipeState(<NewRecipe />);
+};
+
+
 function RecipeList(props) {
   const ctx = useContext(Context);
+
+
+
+  //everything is declared before state so the default state can call it properly
+  const [addRecipeState, setAddRecipeState] = useState(addCard);
+  //sets an event listener on rerender so we can toggle back
+
+
   //declare the addCard
   const addCard = (
     <AddCard onClick={AddRecipe}>
@@ -51,17 +67,13 @@ function RecipeList(props) {
       <p>+</p>
     </AddCard>
   );
-  //the toggles to display the addCard and NewRecipe form
-  const AddRecipe = () => {
-    setAddRecipeState(<NewRecipe />);
-  };
+
+
 
   const DisplayRecipe = () => {
     setAddRecipeState(addCard);
   };
-  //everything is declared before state so the default state can call it properly
-  const [addRecipeState, setAddRecipeState] = useState(addCard);
-  //sets an event listener on rerender so we can toggle back
+
   useEffect(() => {
     if (document.getElementById("form")) {
       document.getElementById("form").addEventListener("submit", DisplayRecipe);

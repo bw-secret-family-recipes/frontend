@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { Context } from "../utils"
 
 const Wrap = styled.div`
     display: flex;
@@ -9,6 +10,7 @@ const Wrap = styled.div`
     background: #d85505;
 `;
 const WrapBox = styled.div`
+    cursor:pointer;
     display: flex;
     align-items: center;
     width: 100%;
@@ -25,31 +27,37 @@ const WrapBox = styled.div`
 
 const DashNav = () => {
 
+    const state = useContext(Context)
+
+    function handleClick(keyword) {
+
+    }
+
     return (
         <Wrap>
-            <WrapBox>
+            {/* <WrapBox>
                 <h4>Profile</h4>
-                <i class="material-icons md-24">search</i>
-            </WrapBox>
-            <WrapBox>
+                <i className="material-icons md-24">search</i>
+            </WrapBox> */}
+            <WrapBox onClick={() => handleClick("new recipe")}>
                 <h4>New Recipe</h4>
-                <i class="material-icons md-24">search</i>
+                <i className="material-icons md-24">search</i>
             </WrapBox>
-            <WrapBox>
+            <WrapBox onClick={() => handleClick("breakfast")}>
                 <h4>BreakFast</h4>
-                <i class="material-icons md-24">search</i>
+                <i className="material-icons md-24">search</i>
             </WrapBox>
-            <WrapBox>
+            <WrapBox onClick={() => handleClick("lunch")}>
                 <h4>Lunch</h4>
-                <i class="material-icons md-24">search</i>
+                <i className="material-icons md-24">search</i>
             </WrapBox>
-            <WrapBox>
+            <WrapBox onClick={() => handleClick("dinner")}>
                 <h4>Dinner</h4>
-                <i class="material-icons md-24">search</i>
+                <i className="material-icons md-24">search</i>
             </WrapBox>
-            <WrapBox>
+            <WrapBox onClick={() => handleClick("snacks")}>
                 <h4>Snacks</h4>
-                <i class="material-icons md-24">search</i>
+                <i className="material-icons md-24">search</i>
             </WrapBox>
         </Wrap>
     )

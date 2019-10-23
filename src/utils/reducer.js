@@ -1,6 +1,5 @@
 
 const reducer = (state = {}, action = { type: "" }) => {
-    console.log(state)
 
     switch (action.type) {
         case "INIT":
