@@ -59,7 +59,7 @@ const Login = (props) => {
         props.history.push("/dashboard") //remove later
 
         ctx.dispatch({ // delete when backend is  up
-            type: "ADD",
+            type: "INIT",
             payload: recipe
         })
 

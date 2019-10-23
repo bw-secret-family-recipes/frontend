@@ -31,7 +31,7 @@ const DashNav = () => {
 
     function handleClick(keyword) {
         let filtered = ctx.state.recipes.filter(rec => {
-            if (keyword == "new recipe") return true;
+            if (keyword == "new recipe" || keyword == "sort") return true;
             return rec.categories.map(v => v.toLowerCase()).includes(keyword)
         })
 
@@ -43,12 +43,12 @@ const DashNav = () => {
 
     return (
         <Wrap>
-            {/* <WrapBox>
-                <h4>Profile</h4>
-                <i className="material-icons md-24">search</i>
-            </WrapBox> */}
             <WrapBox onClick={() => handleClick("new recipe")}>
                 <h4>New Recipe</h4>
+                <i className="material-icons md-24">search</i>
+            </WrapBox>
+            <WrapBox onClick={() => handleClick("sort")}>
+                <h4>Sort</h4>
                 <i className="material-icons md-24">search</i>
             </WrapBox>
             <WrapBox onClick={() => handleClick("breakfast")}>
@@ -63,7 +63,7 @@ const DashNav = () => {
                 <h4>Dinner</h4>
                 <i className="material-icons md-24">search</i>
             </WrapBox>
-            <WrapBox onClick={() => handleClick("snacks")}>
+            <WrapBox onClick={() => handleClick("snack")}>
                 <h4>Snacks</h4>
                 <i className="material-icons md-24">search</i>
             </WrapBox>
