@@ -43,11 +43,11 @@ const Signup = (props) => {
 
     const [confirmPass, setConfirmPass] = useState('')
     const [newUser, setNewUser] = useState({
-        // first_name: '',
-        // last_name: '',
-        // email: '',
-        // username: '',
-        // password: '',
+        first_name: '',
+        last_name: '',
+        email: '',
+        username: '',
+        password: '',
     })
 
     const handlePassword = e => {
@@ -65,12 +65,16 @@ const Signup = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        if (newUser.password !== confirmPass) {
+            alert(`Passwords don't match`);
+        } else {
 
-        axiosAuth().post('/auth/register', newUser)
+            axiosAuth().post('/auth/register', newUser)
             .then(response => {
                 console.log(response)
             })
             .catch(err => console.log(err))
+        }
     }
 
 
