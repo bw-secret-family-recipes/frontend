@@ -39,6 +39,7 @@ const reducer = (state = {}, action = { type: "" }) => {
             }
             break;
         case "EDIT":
+            state.recipes = JSON.parse(localStorage.getItem("recipes")) || []
             return {
                 ...state,
                 recipes: [
@@ -49,6 +50,7 @@ const reducer = (state = {}, action = { type: "" }) => {
             }
             break
         case "DELETE":
+            state.recipes = JSON.parse(localStorage.getItem("recipes")) || []
             return {
                 ...state,
                 recipes: [
