@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { recipe } from "../data"
 import { Context } from "../utils"
+
 import { Link } from "react-router-dom"
 
 const Wrap = styled.div`
@@ -29,6 +30,15 @@ const InputBox = styled.input`
   border-radius: 3px;
   padding: .5em;
   margin: .5rem;
+`;
+const BtnClick = styled.button`
+    width: 14em;
+    height: 3em;
+    margin: auto;
+    border: 1px solid #3f043c;
+    border-radius: 3px;
+    background: white;
+    color: #d85505;
 `;
 
 const BtnClick = styled.button`
