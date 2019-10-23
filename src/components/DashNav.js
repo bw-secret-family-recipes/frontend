@@ -10,6 +10,8 @@ const Wrap = styled.div`
     background: #d85505;
 `;
 const WrapBox = styled.div`
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
     cursor:pointer;
     display: flex;
     align-items: center;

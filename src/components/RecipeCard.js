@@ -37,6 +37,7 @@ const CardTitle = styled.h2`
     justify-content: center;
 `
 const IngredientsUL = styled.ul`
+    font-size: 22px;
     height:auto;
     background: #D85505;
 `
