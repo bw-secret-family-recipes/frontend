@@ -117,7 +117,7 @@ function RecipeCard({ card }) {
     }
 
     function handleDelete() {
-        axiosAuth.delete(`api/recipe/${card.id}`).then(res => console.log(res)).catch(res => console.log(res))
+        axiosAuth.delete(`recipe/${card.id}`).then(res => console.log(res)).catch(res => console.log(res))
 
         state.dispatch({
             type: "DELETE",
@@ -126,7 +126,7 @@ function RecipeCard({ card }) {
     }
 
     function handleSubmit() {
-        axiosAuth.put(`api/recipe/${card.id}`, editCard).then(res => console.log(res)).catch(res => console.log(res))
+        axiosAuth.put(`recipe/${card.id}`, editCard).then(res => console.log(res)).catch(res => console.log(res))
         setEditing(false)
         state.dispatch({
             type: "EDIT",
