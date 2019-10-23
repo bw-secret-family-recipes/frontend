@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { recipe } from "../data"
 import { Context } from "../utils"
+import { Link } from 'react-router-dom';
 
 const Wrap = styled.div`
   display: flex;
@@ -28,6 +29,15 @@ const InputBox = styled.input`
   border-radius: 3px;
   padding: .5em;
   margin: .5rem;
+`;
+const BtnClick = styled.button`
+    width: 14em;
+    height: 3em;
+    margin: auto;
+    border: 1px solid #3f043c;
+    border-radius: 3px;
+    background: white;
+    color: #d85505;
 `;
 
 //props needs history
@@ -74,9 +84,11 @@ const Login = (props) => {
     return (
         <Wrap>
             <MainForm onSubmit={handleSubmit} autofill="on">
+                <h1>Login</h1>
                 <InputBox onChange={handleChange} type="text" name="username" placeholder="Username..." value={user.username} />
                 <InputBox onChange={handleChange} type="password" name="password" placeholder="Password..." value={user.password} />
-                <InputBox type="submit" />
+                <BtnClick type="submit">Submit</BtnClick>
+                <Link to="/signup">Signup</Link>
             </MainForm>
         </Wrap>
     )

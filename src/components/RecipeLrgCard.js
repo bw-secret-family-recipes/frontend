@@ -9,9 +9,9 @@ const CardContainer = styled.div`
     display: flex;
     background: #3F043C;
     flex-direction: column;
-    width: 700px;
-    
-    margin-bottom: 5%
+    width: 250px;
+    height: 100%;
+    margin: 5%
     border-radius: 15px;
     padding: 5px;
     color: white;

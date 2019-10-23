@@ -5,13 +5,12 @@ import RecipeCard from './RecipeCard';
 import { Context } from "../utils"
 
 const RecipeContainer = styled.div`
-    padding:100px 0;
-    display: flex;
-    background: #f2e2ce;
     width: 100%;
-    height: 80vh;
-    border-radius: 10px;
+    display: flex;
+    background: #f2e2ce
+    min-height: 80vh;
     flex-wrap:wrap;
+    justify-content: center;
 `
 
 const AddCard = styled.div`
@@ -49,10 +48,7 @@ function RecipeList(props) {
 
     return (
         <RecipeContainer>
-            <AddCard >
-                <h1>Add New Recipe</h1>
-                <p>+</p>
-            </AddCard>
+            
 
             {ctx.state["show recipes"].map(item => (
                 <div key={item.id}>
@@ -64,3 +60,8 @@ function RecipeList(props) {
 }
 
 export default RecipeList;
+
+            // <AddCard >
+            //     <h1>Add New Recipe</h1>
+            //     <p>+</p>
+            // </AddCard>
