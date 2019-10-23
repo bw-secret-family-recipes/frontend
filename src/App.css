@@ -58,11 +58,8 @@
   display: flex;
   align-content: center;
   justify-content: center;
-<<<<<<< HEAD
-=======
 }
 
->>>>>>> 0fdb1d2db417d133da3467bebe2b40e0ad59246b
 
 .lime601 {
   color: #8ec63f;
@@ -75,7 +72,7 @@
 .toggling {
   width: 80%;
 }
-  
+
 .edit {
   background: #ebedf0 !important;
   border: 1px solid #444 !important;

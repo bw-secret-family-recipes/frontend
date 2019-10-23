@@ -6,6 +6,7 @@ import { Context, axiosAuth } from "../utils"
 import { Link } from "react-router-dom"
 
 const Wrap = styled.div`
+  font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
