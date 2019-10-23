@@ -6,7 +6,8 @@ import { Context } from "../utils";
 const Wrap = styled.div`
   overflow: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap:wrap;
   justify-content: center;
   align-items: center;
   background: #d85505;
@@ -29,14 +30,30 @@ const InputArea = styled.textarea`
   border-radius: 3px;
   padding: 0.5em;
   margin: 0.5rem;
+  height:80px;
+  width:100%;
 `;
 const MainForm = styled.form`
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: center;
   padding: 1em;
   background: #f2e2ce;
   border-radius: 3px;
+  background:#3f043c;
+  width: 250px;
+  height: 400px;
+  overflow:auto;
+  box-sizing:border-box;
+  border-radius:15px;
+  margin-right:50px;
+  margin-top:50px;
+
+  span{
+    color:white;
+  }
+
 `;
 const IngredFormSet = styled.fieldset`
   display: flex;
@@ -133,69 +150,66 @@ const NewRecipe = props => {
   };
 
   return (
-    <Wrap>
-      <h1>Your New Recipe!</h1>
-      <div>
-        <MainForm id="form" onSubmit={onSubmit}>
-          <InputBox
-            type="text"
-            name="recipe_name"
-            value={newRecipe.recipe_name}
-            placeholder="Title:"
-            onChange={handleChange}
-          />
-          <InputBox
-            type="text"
-            name="source"
-            value={newRecipe.source}
-            placeholder="Author:"
-            onChange={handleChange}
-          />
-          <IngredFormSet>
-            <InputBox
-              id="ingredientinput"
-              type="text"
-              name="ingredients"
-              value={ingredients.ingredients}
-              placeholder="ingredient:"
-              onChange={handleIngredient}
-            />
-            <BtnClick type="button" onClick={Ingredient}>
-              Add Ingredient!
+
+    <MainForm id="form" onSubmit={onSubmit} className="no-scroll">
+      <InputBox
+        type="text"
+        name="recipe_name"
+        value={newRecipe.recipe_name}
+        placeholder="Title:"
+        onChange={handleChange}
+      />
+      <InputBox
+        type="text"
+        name="source"
+        value={newRecipe.source}
+        placeholder="Author:"
+        onChange={handleChange}
+      />
+      <IngredFormSet>
+        <InputBox
+          id="ingredientinput"
+          type="text"
+          name="ingredients"
+          value={ingredients.ingredients}
+          placeholder="ingredient:"
+          onChange={handleIngredient}
+        />
+        <BtnClick type="button" onClick={Ingredient}>
+          Add Ingredient!
             </BtnClick>
-          </IngredFormSet>
-          {newRecipe.ingredients.map(item => (
-            <p key={item}>{item}</p>
-          ))}
-          <InputArea
-            id="recipe_instructions"
-            type="textarea"
-            name="recipe_instructions"
-            value={newRecipe.recipe_instructions}
-            placeholder="Instructions:"
-            onChange={handleChange}
-          />
-          <IngredFormSet>
-            <InputBox
-              id="taginput"
-              type="text"
-              name="tags"
-              value={tags.tags}
-              placeholder="Tag:"
-              onChange={handleTags}
-            />
-            <BtnClick type="button" onClick={Tag}>
-              Add Tag!
+      </IngredFormSet>
+      {newRecipe.ingredients.map(item => (
+        <span key={item}>{item}</span>
+      ))}
+      <InputArea
+        id="recipe_instructions"
+        type="textarea"
+        name="recipe_instructions"
+        value={newRecipe.recipe_instructions}
+        placeholder="Instructions:"
+        onChange={handleChange}
+      />
+      <IngredFormSet>
+        <InputBox
+          id="taginput"
+          type="text"
+          name="tags"
+          value={tags.tags}
+          placeholder="Tag:"
+          onChange={handleTags}
+        />
+        <BtnClick type="button" onClick={Tag}>
+          Add Tag!
             </BtnClick>
-          </IngredFormSet>
-          {newRecipe.categories.map(item => (
-            <span key={item}>{item}, </span>
-          ))}
-          <Space />
-          <BtnClick id="submitbutton">Add Recipe!</BtnClick>
-        </MainForm>
-      </div>
-    </Wrap>
+      </IngredFormSet>
+      {newRecipe.categories.map(item => (
+        <span key={item}>{item}, </span>
+      ))}
+
+      <BtnClick id="submitbutton">Add Recipe!</BtnClick>
+    </MainForm>
+
   );
 };
 

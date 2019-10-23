@@ -59,3 +59,9 @@
   align-content: center;
   justify-content: center;
 }
+
+.edit {
+  background: white !important;
+  border: 1px solid black !important;
+  color: steelblue !important;
+}
