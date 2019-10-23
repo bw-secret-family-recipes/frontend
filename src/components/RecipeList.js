@@ -13,7 +13,10 @@ const RecipeContainer = styled.div`
   height: 80vh;
   border-radius: 10px;
   flex-wrap: wrap;
+  //justify-content:center;
 `;
+   
+    
 
 const AddCard = styled.div`
   width: 250px;
