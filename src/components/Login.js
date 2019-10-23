@@ -55,7 +55,6 @@ const Login = (props) => {
     function handleSubmit(e) {
         e.preventDefault();
 
-
         localStorage.setItem("token", "asd") //remove later
         props.history.push("/dashboard") //remove later
 
@@ -63,7 +62,6 @@ const Login = (props) => {
             type: "INIT",
             payload: recipe
         })
-
 
         axiosAuth().post("/auth/login", user).then(res => {
             localStorage.setItem("token", res);
