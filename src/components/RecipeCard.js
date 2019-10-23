@@ -29,6 +29,7 @@ const CardContainer = styled.div`
         h2 {
             background: #0005;
             color: white;
+            padding:15px 0;
         }
     }
 `
@@ -97,10 +98,12 @@ const SubmitButton = styled.button`
 
 function RecipeCard({ card }) {
 
-    const { state } = useContext(Context)
+    const state = useContext(Context)
 
     const [editing, setEditing] = useState(false);
     const [editCard, setEditCard] = useState(card);
+    console.log(state);
+    console.log(card);
 
     function handleChange(e) {
         let event = { ...e }
@@ -117,8 +120,13 @@ function RecipeCard({ card }) {
     }
 
     function handleDelete() {
-        axiosAuth.delete(`recipe/${card.id}`).then(res => console.log(res)).catch(res => console.log(res))
-
+        
+        // Use once backend is up
+        // axiosAuth().delete(`recipe/${card.id}`)
+        // .then(res => console.log(res))
+        // .catch(res => console.log(res))
+        console.log(card.id);
+        console.log(state.dispatch);
         state.dispatch({
             type: "DELETE",
             payload: card.id
@@ -126,7 +134,7 @@ function RecipeCard({ card }) {
     }
 
     function handleSubmit() {
-        axiosAuth.put(`recipe/${card.id}`, editCard).then(res => console.log(res)).catch(res => console.log(res))
+        axiosAuth().put(`recipe/${card.id}`, editCard).then(res => console.log(res)).catch(res => console.log(res))
         setEditing(false)
         state.dispatch({
             type: "EDIT",

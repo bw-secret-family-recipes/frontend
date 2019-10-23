@@ -66,12 +66,10 @@ const InputField = React.forwardRef((props,ref) => {
         <>
          <input {...getInputProps({ref, ...rest})} /> {" "}
          {isValidating ? (
-             <em></em>
+             console.log(`validating`)
          ) : isTouched && error ? (<em>{error}</em>) : null}
         </>
-
     )
-
 })
 
 
@@ -87,6 +85,15 @@ const Signup = (props) => {
         username: '',
         password: '',
     })
+
+    // const { 
+    //     Form,
+        
+    // }
+
+
+
+
 
     const handlePassword = e => {
         e.preventDefault();
@@ -121,12 +128,13 @@ const Signup = (props) => {
         <Wrap>
             <MainForm>
                 <h1>Sign Up</h1>
-                <InputBox required='true' type='text' name='first_name' value={newUser.first_name} placeholder='First Name' onChange={handleChange} />
-                <InputBox required type='text' name='last_name' value={newUser.last_name} placeholder='Last Name' onChange={handleChange} />
-                <InputBox required type='email' name='email' value={newUser.email} placeholder='email' onChange={handleChange} />
-                <InputBox required type='text' name='username' value={newUser.username} placeholder='Username' onChange={handleChange} />
-                <InputBox required type='password' name='password' value={newUser.password} placeholder='Password' onChange={handleChange}/>
-                <InputBox required type='password' name='confirmPass' value={confirmPass} placeholder='Confirm Password' onChange={handlePassword} />
+
+                <InputBox required={true} type='text' name='first_name' value={newUser.first_name} placeholder='First Name' onChange={handleChange} />
+                <InputBox required={true} type='text' name='last_name' value={newUser.last_name} placeholder='Last Name' onChange={handleChange} />
+                <InputBox required={true} type='email' name='email' value={newUser.email} placeholder='email' onChange={handleChange} />
+                <InputBox required={true} type='text' name='username' value={newUser.username} placeholder='Username' onChange={handleChange} />
+                <InputBox required={true} type='password' name='password' value={newUser.password} placeholder='Password' onChange={handleChange}/>
+                <InputBox required={true} type='password' name='confirmPass' value={confirmPass} placeholder='Confirm Password' onChange={handlePassword} />
                 <BtnClick onClick={handleSubmit} >Submit</BtnClick>
                 <Link to="/login">Login</Link>
             </MainForm>
