@@ -17,6 +17,7 @@ const CardContainer = styled.div`
     color: white;
     margin-right:50px;
     margin-top:50px;
+    animation-name: smaller;
 
     .ingredients{
         width:100%;
@@ -85,10 +86,6 @@ const FullscreenButton = styled.button`
     &:hover{
         background: darkgrey;
         transition: .5s;
-    }
-    
-    .toggling {
-        width: 80%;
     }
 `
 
