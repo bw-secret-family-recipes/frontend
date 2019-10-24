@@ -24,7 +24,7 @@ export const recipe = [
    },
    {
       "id": 2,
-      "time": 2,
+      "time": 9,
       "user_id": 5,
       "recipe_name": "Grilled Cheese",
       "source": "Mark Collins",
