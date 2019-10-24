@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import RecipeCard from "./RecipeCard";
 import NewRecipe from "./NewRecipeForm";
 import { Context } from "../utils";
+
 const RecipeContainer = styled.div`
     width: 85%;
+    height:100%;
     display: flex;
     background: #f2e2ce
-    height: 80vh;
     flex-wrap:wrap;
     justify-content: center;
     overflow:auto;
@@ -38,16 +38,16 @@ const AddCard = styled.div`
     color: gray;
   }
 `;
+
 function RecipeList(props) {
   const ctx = useContext(Context);
-
+  const { handleFullscreen } = props;
 
 
   //the toggles to display the addCard and NewRecipe form
   const AddRecipe = () => {
     setAddRecipeState(<NewRecipe />);
   };
-
 
   //declare the addCard
   const addCard = (
@@ -59,6 +59,8 @@ function RecipeList(props) {
   const DisplayRecipe = () => {
     setAddRecipeState(addCard);
   };
+
+
 
   //everything is declared before state so the default state can call it properly
   const [addRecipeState, setAddRecipeState] = useState(addCard);
@@ -74,9 +76,11 @@ function RecipeList(props) {
       {addRecipeState}
       {ctx.state["show recipes"].map(item => (
         <div key={item.id}>
-          <RecipeCard card={item}></RecipeCard>
+          <RecipeCard handleFullscreen={handleFullscreen} card={item}></RecipeCard>
         </div>
+
       ))}
+
     </RecipeContainer>
   );
 }

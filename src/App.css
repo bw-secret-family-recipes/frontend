@@ -18,7 +18,7 @@
 
 .App-header {
   background-color: #3f043c;
-  min-height: 150px;
+  min-height: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,20 +76,28 @@
   color: steelblue !important;
 }
 
-.toggling {
+.visible {
+  opacity: 1 !important;
+}
+
+.side-pannel {
+  width: 60%;
+  height: 100%;
+}
+
+
+
+
+/* .toggling {
   width: 80%;
-  animation-name: larger;
+  animation-name: larger; 
   animation-duration: 1s;
   animation-iteration-count: 1;
   animation-direction: alternate;
 }
-
+ 
 @keyframes larger {
   from{width: 250px;}
   to{width: 80%;}
-}
-
-@keyframes smaller {
-  from{width: 80%;}
-  to{width: 250px;}
-}
+  
+} */

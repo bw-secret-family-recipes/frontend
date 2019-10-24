@@ -53,9 +53,10 @@ const Login = (props) => {
         password: "pass" //remove after testing
     });
 
+
+    
     function handleSubmit(e) {
         e.preventDefault();
-
         localStorage.setItem("token", "asd") //remove later
         props.history.push("/dashboard") //remove later
 
