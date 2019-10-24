@@ -1,7 +1,5 @@
 <h1>Secret Family Recipes</h1>
-<h2>Grandma’s favorite website</>
-
-
+<h2>Grandma’s favorite website</h2>
 <h4>Mission</h4>
 <p>We help preserve the information from loved ones for little to no cost, because they deserve it.</p>
 <br></br>
