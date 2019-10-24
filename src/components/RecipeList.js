@@ -13,6 +13,8 @@ const RecipeContainer = styled.div`
     flex-wrap:wrap;
     justify-content: center;
     overflow:auto;
+    position:relative;
+    padding-top:20px;
 `;
 const AddCard = styled.div`
   width: 250px;
