@@ -38,6 +38,19 @@ const reducer = (state = {}, action = { type: "" }) => {
                 ]
             }
             break;
+        case "ADD_NEW_USER": 
+            state.user = state.user || {}
+            localStorage.setItem('user', JSON.stringify({
+                ...action.payload
+            }))
+            console.log(action.payload)
+            return {
+                ...state,
+                user: {
+                    ...action.payload
+                }
+            }
+            break
         case "EDIT":
             state.recipes = JSON.parse(localStorage.getItem("recipes")) || []
             return {
