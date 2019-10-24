@@ -41,7 +41,7 @@ const Carousel = (props) => {
 const CarouselItem = (props) => {
     return (
         <CarouselItemStyle>
-            <img src={foodImages[randInt(0, foodImages.length)]} alt="" />
+            <img src={foodImages[randInt(0, foodImages.length)]} alt="image" />
             <span>{props["recipe_name"]}</span>
         </CarouselItemStyle>
     )
