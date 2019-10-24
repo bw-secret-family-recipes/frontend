@@ -85,7 +85,9 @@
   height: 100% !important;
 }
 
-
+.card-author {
+  padding: 5px;
+}
 
 
 /* .toggling {

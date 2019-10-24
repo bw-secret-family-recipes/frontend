@@ -143,5 +143,19 @@ export const recipe = [
          "1 clove Garlic",
       ],
       "recipe_instructions": "Pre-heat oven to 400deg F. Chop onion and set asside. Take out your ground beef and mix in salt and pepper, then saute over medium heat until cooked thoroughly. Add in your onion and garlic and sautee unil somewhat transparent and mix in your taco seasoning. You're almost there! Now just coat the bottom of your glass pan with a pit of no-stick spray, butter or oil (your choice, just not too much). Here's the fun part, crush up all of the doritos, then pour them into the bottom of your pan. Next, put taco meat in, then a layer of cheese, then a layer of lettuce, then a second (light) layer of cheese, and lastly a bit of salsa on top. Now you just stick it into your pre-heated oven for 20 mins then enjoy! Be sure to have your favorite taco toppings on standby for full enjoyment.",
+      "time": 8,
+      "user_id": 5,
+      "recipe_name": "Mac N Cheese",
+      "source": "Mason Roberts",
+      "categories": [
+         "Lunch"
+      ],
+      "ingredients": [
+         "Elbow Mac",
+         "American Cheese",
+         "Milk",
+         "Butter"
+      ],
+      "recipe_instructions": "Boil mac. Drain mac. Add 1/4 tblespoon butter. Add 4 or so slices of cheese. Stir that good. Best do it while it is hot and break up cheese slices before adding to pot.",
    }
 ]
