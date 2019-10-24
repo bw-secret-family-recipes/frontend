@@ -7,14 +7,13 @@ import { Context } from "../utils";
 
 const RecipeContainer = styled.div`
     width: 85%;
-    height:100%;
+    height:85vh;
     display: flex;
     background: #f2e2ce
     flex-wrap:wrap;
     justify-content: center;
     overflow:auto;
     position:relative;
-    padding-top:20px;
 `;
 const AddCard = styled.div`
   width: 250px;
@@ -30,7 +29,7 @@ const AddCard = styled.div`
   cursor: pointer;
   position: relative;
   margin-right: 50px;
-  margin-top: 50px;
+  margin-top: 70px;
   h1 {
     position: absolute;
     top: 20px;
