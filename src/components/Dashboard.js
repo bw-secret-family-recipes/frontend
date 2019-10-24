@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import DashNav from './DashNav';
 import RecipeList from "./RecipeList"
 import NavLrg from './NavLrg';
-import RecipeCard from './RecipeCard';
 
 const Column = styled.div`
     display: flex;

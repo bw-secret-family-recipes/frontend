@@ -8,6 +8,10 @@ const Wrap = styled.div`
   width: 15%;
   align-items: center;
   background: #d85505;
+
+  @media (max-width: 800px) {
+    display: none;
+  }
 `;
 const WrapBox = styled.div`
   font-family: "Poppins", sans-serif;
