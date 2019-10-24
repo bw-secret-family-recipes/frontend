@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import RecipeCard from "./RecipeCard";
 import NewRecipe from "./NewRecipeForm";
-import Carousel from "./Carousel"
+import Carousel from "./Carousel";
 import { Context } from "../utils";
 
 const RecipeContainer = styled.div`
@@ -44,50 +44,52 @@ const AddCard = styled.div`
 
 function RecipeList(props) {
   const ctx = useContext(Context);
+
+  const [show, setShow] = useState(false);
+
   const { handleFullscreen } = props;
 
-
-  //the toggles to display the addCard and NewRecipe form
-  const AddRecipe = () => {
-    setAddRecipeState(<NewRecipe />);
+  const toggleFalse = () => {
+    setShow(false);
   };
 
-  //declare the addCard
+  const toggleTrue = () => {
+    setShow(true);
+  };
+
   const addCard = (
-    <AddCard onClick={AddRecipe}>
+    <AddCard onClick={toggleTrue}>
       <h1>Add New Recipe</h1>
       <p>+</p>
     </AddCard>
   );
-  const DisplayRecipe = () => {
-    setAddRecipeState(addCard);
-  };
-
-
-
-  //everything is declared before state so the default state can call it properly
-  const [addRecipeState, setAddRecipeState] = useState(addCard);
-  //sets an event listener on rerender so we can toggle back
 
   useEffect(() => {
+    if (document.getElementById("addrecipe")) {
+      document
+        .getElementById("addrecipe")
+        .addEventListener("click", toggleTrue);
+    }
     if (document.getElementById("form")) {
-      document.getElementById("form").addEventListener("submit", DisplayRecipe);
+      document.getElementById("form").addEventListener("submit", toggleFalse);
     }
   });
-  return (
 
+  return (
     <RecipeContainer className="no-scroll">
+      {(show && <NewRecipe />) || addCard}
+
       <Carousel items={ctx.state["show recipes"]}></Carousel>
-      {addRecipeState}
+
       {ctx.state["show recipes"].map(item => (
         <div key={item.id}>
-          <RecipeCard handleFullscreen={handleFullscreen} card={item}></RecipeCard>
+          <RecipeCard
+            handleFullscreen={handleFullscreen}
+            card={item}
+          ></RecipeCard>
         </div>
-
       ))}
-
     </RecipeContainer>
-
   );
 }
 export default RecipeList;
