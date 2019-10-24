@@ -15,6 +15,7 @@ const Wrap = styled.div`
   padding-bottom: 5%;
 `;
 const MainForm = styled.form`
+  font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
