@@ -7,7 +7,7 @@ const Wrap = styled.div`
   overflow: auto;
   display: flex;
   flex-direction: row;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   background: #d85505;
@@ -30,30 +30,29 @@ const InputArea = styled.textarea`
   border-radius: 3px;
   padding: 0.5em;
   margin: 0.5rem;
-  height:80px;
-  width:100%;
+  height: 80px;
+  width: 100%;
 `;
 const MainForm = styled.form`
   display: flex;
   flex-direction: row;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   justify-content: center;
   padding: 1em;
   background: #f2e2ce;
   border-radius: 3px;
-  background:#3f043c;
+  background: #3f043c;
   width: 250px;
   height: 400px;
-  overflow:auto;
-  box-sizing:border-box;
-  border-radius:15px;
-  margin-right:50px;
-  margin-top:50px;
+  overflow: auto;
+  box-sizing: border-box;
+  border-radius: 15px;
+  margin-right: 50px;
+  margin-top: 50px;
 
-  span{
-    color:white;
+  span {
+    color: white;
   }
-
 `;
 const IngredFormSet = styled.fieldset`
   display: flex;
@@ -76,10 +75,14 @@ const Space = styled.p`
   margin: 0.8em;
   padding: 0;
 `;
+const ListItems = styled.span`
+  padding-right: 5px;
+`;
 
 const NewRecipe = props => {
   const state = useContext(Context);
   const [newRecipe, setNewRecipe] = useState({
+    id: "",
     recipe_name: "",
     source: "",
     // ingredients: [{ id: "", ingredient: "", quantity: "", unit: "" }],
@@ -102,7 +105,10 @@ const NewRecipe = props => {
   //handles state changes for the ingredients and tags arrays before adding them to the newRecipe Object
   const handleIngredient = e => {
     e.preventDefault();
-    setIngredients({ ...ingredients, [e.target.name]: e.target.value });
+    setIngredients({
+      ...ingredients,
+      [e.target.name]: e.target.value
+    });
   };
   const handleTags = e => {
     e.preventDefault();
@@ -112,6 +118,7 @@ const NewRecipe = props => {
   const onSubmit = e => {
     e.preventDefault();
     if (document.getElementById("recipe_instructions").value != "") {
+      setNewRecipe({ id: Date.now() });
       // axiosAuth()
       //   .post("/recipe", newRecipe)
       //   .then(res => console.log(res.data));
@@ -150,7 +157,6 @@ const NewRecipe = props => {
   };
 
   return (
-
     <MainForm id="form" onSubmit={onSubmit} className="no-scroll">
       <InputBox
         type="text"
@@ -166,6 +172,9 @@ const NewRecipe = props => {
         placeholder="Author:"
         onChange={handleChange}
       />
+      {newRecipe.ingredients.map((item, index) => (
+        <ListItems key={index}>{item},</ListItems>
+      ))}
       <IngredFormSet>
         <InputBox
           id="ingredientinput"
@@ -177,11 +186,9 @@ const NewRecipe = props => {
         />
         <BtnClick type="button" onClick={Ingredient}>
           Add Ingredient!
-            </BtnClick>
+        </BtnClick>
       </IngredFormSet>
-      {newRecipe.ingredients.map(item => (
-        <span key={item}>{item}</span>
-      ))}
+
       <InputArea
         id="recipe_instructions"
         type="textarea"
@@ -190,6 +197,9 @@ const NewRecipe = props => {
         placeholder="Instructions:"
         onChange={handleChange}
       />
+      {newRecipe.categories.map((item, index) => (
+        <ListItems key={index}>{item},</ListItems>
+      ))}
       <IngredFormSet>
         <InputBox
           id="taginput"
@@ -201,15 +211,11 @@ const NewRecipe = props => {
         />
         <BtnClick type="button" onClick={Tag}>
           Add Tag!
-            </BtnClick>
+        </BtnClick>
       </IngredFormSet>
-      {newRecipe.categories.map(item => (
-        <span key={item}>{item}, </span>
-      ))}
 
       <BtnClick id="submitbutton">Add Recipe!</BtnClick>
     </MainForm>
-
   );
 };
 

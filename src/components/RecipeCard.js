@@ -26,10 +26,13 @@ const CardContainer = styled.div`
 
     .card-title {
         background: url(https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=687&q=80) 100% / cover;
+        border-radius: 15px 15px 0 0;
+        border: 2px solid #3f043c;
         h2 {
             background: #0005;
             color: white;
             padding:15px 0;
+            
         }
     }
     
