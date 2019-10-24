@@ -9,21 +9,21 @@
 <a href="https://frontend.bw-secret-family-recipes.now.sh">https://frontend.bw-secret-family-recipes.now.sh/</a>
 
 
-##Features
+## Features
 *   Users can create unique accounts
 *   Users can create, edit, update, and delete their own recipes
 *   Users can access all of their recipes from their dashboard
 *   Users can search and filter their recipes by category and title
 
 
-##Future Functionality
+## Future Functionality
 
 *  Allow users to set specific recipes as public
 *  Allow users to view all publicly-viewable recipes from other users
 *  Allow users to save and share other users recipes 
 
 
-##Tech Stack
+## Tech Stack
 
 *   React
 *   react-router/
