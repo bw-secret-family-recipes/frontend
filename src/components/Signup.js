@@ -43,34 +43,34 @@ const InputBox = styled.input`
   }
 `;
 
-function validateFirstName(value){
-    if (!value){
-        return 'Please Enter Your First Name';
-    }
-    return false;
-}
+// function validateFirstName(value){
+//     if (!value){
+//         return 'Please Enter Your First Name';
+//     }
+//     return false;
+// }
 
 
 
-const InputField = React.forwardRef((props,ref) => {
-    //form specific props
-    const [field, fieldOptions, rest] = splitFormProps(props)
+// const InputField = React.forwardRef((props,ref) => {
+//     //form specific props
+//     const [field, fieldOptions, rest] = splitFormProps(props)
 
-    const {
-        meta: {error, isTouched, isValidating},
-        getInputProps
-    } = useField(field, fieldOptions);
+//     const {
+//         meta: {error, isTouched, isValidating},
+//         getInputProps
+//     } = useField(field, fieldOptions);
 
 
-    return(
-        <>
-         <input {...getInputProps({ref, ...rest})} /> {" "}
-         {isValidating ? (
-             console.log(`validating`)
-         ) : isTouched && error ? (<em>{error}</em>) : null}
-        </>
-    )
-})
+//     return(
+//         <>
+//          <input {...getInputProps({ref, ...rest})} /> {" "}
+//          {isValidating ? (
+//              console.log(`validating`)
+//          ) : isTouched && error ? (<em>{error}</em>) : null}
+//         </>
+//     )
+// })
 
 
 
@@ -86,10 +86,15 @@ const Signup = (props) => {
         password: '',
     })
 
-    // const { 
-    //     Form,
-        
-    // }
+    const [inputErrors] = useState({
+        first_name: '',
+        last_name: '',
+        email: 'Please enter your email',
+        username: 'Please enter a unique username',
+        password: 'Please enter a password',
+        confirmPassword: 'Please confirm your password',
+    })
+
 
 
 
@@ -122,6 +127,34 @@ const Signup = (props) => {
             .catch(err => console.log(err))
         }
     }
+
+
+    // const handleValidation = e => {
+    //     e.preventDefault();
+        
+    //     switch(e.target.name){
+    //         case 'first_name':
+    //             inputErrors.first_name = newUser.first_name 
+    //             ? "Please enter your first name" 
+    //             :  
+    //                 setNewUser({
+    //                     ...newUser,
+    //                     [e.target.name]: e.target.value,
+    //                 })
+    //             break;
+    //         case 'last_name':
+    //             inputErrors.last_name = newUser.last_name
+    //             ? "Please enter your last name"
+    //             : 
+    //                 setNewUser({
+    //                     ...newUser,
+    //                     [e.target.name]: e.target.value,
+    //                 })
+    //             break;
+    //     }
+    // }
+
+
 
 
     return (
