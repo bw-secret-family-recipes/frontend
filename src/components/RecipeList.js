@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import RecipeCard from "./RecipeCard";
 import NewRecipe from "./NewRecipeForm";
+import Carousel from "./Carousel"
 import { Context } from "../utils";
 
 const RecipeContainer = styled.div`
@@ -72,7 +73,9 @@ function RecipeList(props) {
     }
   });
   return (
+
     <RecipeContainer className="no-scroll">
+      <Carousel items={ctx.state["show recipes"]}></Carousel>
       {addRecipeState}
       {ctx.state["show recipes"].map(item => (
         <div key={item.id}>
@@ -82,6 +85,7 @@ function RecipeList(props) {
       ))}
 
     </RecipeContainer>
+
   );
 }
 export default RecipeList;

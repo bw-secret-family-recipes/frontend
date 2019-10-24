@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { axiosAuth, Context } from "../utils"
 
 
-const foodImages = [
+export const foodImages = [
     "https://images.unsplash.com/photo-1506354666786-959d6d497f1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
     "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
     "https://images.unsplash.com/photo-1470119693884-47d3a1d1f180?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=694&q=80",
@@ -21,7 +21,7 @@ const foodImages = [
     "https://images.unsplash.com/photo-1482137526803-25edd694e5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
 ]
 
-function randInt(min, max) {
+export function randInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min
 }
 
