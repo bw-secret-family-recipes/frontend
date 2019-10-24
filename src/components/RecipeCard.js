@@ -17,13 +17,11 @@ const CardContainer = styled.div`
     color: white;
     margin-right:50px;
     margin-top:50px;
-
     .ingredients{
         width:100%;
         min-height:150px;
         overflow:auto;
     }
-
     .card-title {
         background: url(https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=687&q=80) 100% / cover;
         border-radius: 15px 15px 0 0;
@@ -32,31 +30,26 @@ const CardContainer = styled.div`
             background: #0005;
             color: white;
             padding:15px 0;
-            
         }
     }
-    
-`
+`;
 const CardTitle = styled.h2`
     display: flex;
     justify-content: center;
-`
+`;
 const IngredientsUL = styled.ul`
     font-size: 22px;
     height:auto;
     background: #D85505;
-`
+`;
 const IngredientsLI = styled.li`
     list-style-type: square;
-`
+`;
 const ButtonContainer = styled.div`
     justify-content: space-between;
     padding: 3px;
     margin: 0 auto;
-    
-`
-
-
+`;
 const Button = styled.button`
     background: white;
     width: 45px;
@@ -70,9 +63,7 @@ const Button = styled.button`
         background: darkgrey;
         transition: .5s;
     }
-`
-
-
+`;
 const FullscreenButton = styled.button`
     background: white;
     width: 45px;
@@ -90,7 +81,7 @@ const FullscreenButton = styled.button`
     .toggling {
         width: 80%;
     }
-`
+`;
 
 function RecipeCard({ card }) {
 
@@ -99,7 +90,6 @@ function RecipeCard({ card }) {
     const [editing, setEditing] = useState(false);
     const [editCard, setEditCard] = useState(card);
     const [cardSize, setCardSize] = useState(false);
-
 
     function handleChange(e) {
         let event = { ...e }
@@ -143,8 +133,6 @@ function RecipeCard({ card }) {
         setEditing(false)
     }
 
-    
-
     return (
         <CardContainer className= {`no-scroll ${(cardSize) ? 'toggling' : ''}`} onChange = {handleFullscreen}>
             <div className='card-title'>
@@ -160,7 +148,6 @@ function RecipeCard({ card }) {
                             <IngredientsLI key={i} name="ingredients" onChange={handleChange} contentEditable={editing} className={(editing ? "edit" : "")}>{v}</IngredientsLI>
                         )
                     })}
-
                 </IngredientsUL>
             </div>
             <div className='instructions'>
@@ -170,13 +157,10 @@ function RecipeCard({ card }) {
                 <Button onClick={handleEdit}><i className = 'material-icons lime601 md-36'>edit</i></Button>
                 <Button onClick={handleDelete}><i className = 'material-icons lime601 md-36'>delete</i></Button>
                 <FullscreenButton onClick = {handleFullscreen}><i className = 'material-icons lime601 md-36'>photo_size_select_small</i></FullscreenButton>
-                {editing && <Button onClick={handleSubmit}><i className = 'material-icons lime601 md-36'>check_circle_outline</i></Button>}
-                
+                {editing && <Button onClick={handleSubmit}><i className = 'material-icons lime601 md-36'>check_circle_outline</i></Button>}   
             </ButtonContainer>
         </CardContainer>
     )
 }
-
-
 
 export default RecipeCard;
