@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import RecipeCard from "./RecipeCard";
 import NewRecipe from "./NewRecipeForm";
-import Carousel from "./Carousel"
+import Carousel from "./Carousel";
 import { Context } from "../utils";
 
 const RecipeContainer = styled.div`
@@ -49,7 +49,6 @@ function RecipeList(props) {
 
   const { handleFullscreen } = props;
 
-
   const toggleFalse = () => {
     setShow(false);
   };
@@ -65,14 +64,6 @@ function RecipeList(props) {
     </AddCard>
   );
 
-  const DisplayRecipe = () => {
-    setAddRecipeState(addCard);
-  };
-
-  //everything is declared before state so the default state can call it properly
-  const [addRecipeState, setAddRecipeState] = useState(addCard);
-  //sets an event listener on rerender so we can toggle back
-
   useEffect(() => {
     if (document.getElementById("addrecipe")) {
       document
@@ -85,22 +76,20 @@ function RecipeList(props) {
   });
 
   return (
-
     <RecipeContainer className="no-scroll">
-
       {(show && <NewRecipe />) || addCard}
 
       <Carousel items={ctx.state["show recipes"]}></Carousel>
 
       {ctx.state["show recipes"].map(item => (
         <div key={item.id}>
-          <RecipeCard handleFullscreen={handleFullscreen} card={item}></RecipeCard>
+          <RecipeCard
+            handleFullscreen={handleFullscreen}
+            card={item}
+          ></RecipeCard>
         </div>
-
       ))}
-
     </RecipeContainer>
-
   );
 }
 export default RecipeList;
