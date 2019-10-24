@@ -39,13 +39,13 @@ const CardContainer = styled.div`
     padding: 5px;
     color: white;
     margin-right:50px;
-    margin-top:70px;
+    margin-top: 70px;
     transition: width 1s;
 
 
     .instructions{
         text-decoration: underline;
-        text-decoration-color: #ffffff6b;
+        text-decoration-color: #541A51;
     }
 
     .ingredients{
