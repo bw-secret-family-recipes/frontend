@@ -18,12 +18,29 @@ const WrapBox = styled.div`
     width: 100%;
     border-bottom: 2px solid #8ec63f;
     padding:20px 10px;
-    h4 {
+    transition: all .2s ease-in-out;
+    h4{
         margin-left: 5%;
-        width: 65%;
+        width:65%;
     }
     :hover {
-        color: #8ec63f;
+        i {
+            color: #8ec63f;
+        border-bottom: 0px;
+        background: #47E5A;
+        animation: pulse .5s ease .1s normal 2;
+        }
+        h4{
+            color: #8ec63f;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                transfom: scale(1.0);
+            }
+            50% {
+                transform: scale(1.7);
+            }
+        }
     }
 `;
 
@@ -35,7 +52,7 @@ const DashNav = () => {
 
         if (keyword == "sort") {
             let sorted = ctx.state.recipes.sort((a, b) => {
-                return a.time > b.time
+                return b.time - a.time
             })
 
             ctx.dispatch({

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import axios from 'axios';
 import { axiosAuth, Context } from '../utils';
+import { recipe } from "../data"
 // import {useForm, useField, splitFormProps} from 'react-form';
 
 const Wrap = styled.div`
@@ -99,10 +100,6 @@ const Signup = (props) => {
     })
 
 
-
-
-
-
     const handlePassword = e => {
         e.preventDefault();
         setConfirmPass(e.target.value);
@@ -136,7 +133,15 @@ const Signup = (props) => {
             dispatch({
                 type: "ADD_NEW_USER",
                 payload: newUser
+            });
+            localStorage.setItem("token", "asd");
+            props.history.push('/dashboard');
+            
+            dispatch({
+                type: "INIT",
+                payload: recipe
             })
+
         } else {
             alert(`Please fill in all fields`);
         }
