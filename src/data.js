@@ -120,5 +120,22 @@ export const recipe = [
          "Spice"
       ],
       "recipe_instructions": "Prepare a cup of rice giving 2 cups of cooked rice. Prepare 4 large green peppers by coring and blanch. Begin browning of ground beef. Half through add chopped onion. Drain grease and add 2 cans of chopped tomatoes, worchestershire, garlic, salt and pepper, italian seasoning and simmer until well blended. 2o min. Add rice and cheese and mix well. Stuff each pepper and add rest of stuffing around peppers. Top each pepper with a bit of ketsup. Bake for half hour.",
+   },
+   {
+      "id": 8,
+      "time": 8,
+      "user_id": 5,
+      "recipe_name": "Mac N Cheese",
+      "source": "Mason Roberts",
+      "categories": [
+         "Lunch"
+      ],
+      "ingredients": [
+         "Elbow Mac",
+         "American Cheese",
+         "Milk",
+         "Butter"
+      ],
+      "recipe_instructions": "Boil mac. Drain mac. Add 1/4 tblespoon butter. Add 4 or so slices of cheese. Stir that good. Best do it while it is hot and break up cheese slices before adding to pot.",
    }
 ]

@@ -25,6 +25,7 @@ const CarouselItemStyle = styled.div`
         width:40px;
         border-radius:50%;
         object-fit:fill;
+        padding-right: 5px;
     }
 `
 
