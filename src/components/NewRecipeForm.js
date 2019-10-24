@@ -82,7 +82,7 @@ const ListItems = styled.span`
 const NewRecipe = props => {
   const state = useContext(Context);
   const [newRecipe, setNewRecipe] = useState({
-    id: "",
+    id: 1,
     recipe_name: "",
     source: "",
     // ingredients: [{ id: "", ingredient: "", quantity: "", unit: "" }],
@@ -100,7 +100,11 @@ const NewRecipe = props => {
   //handles state changes for the newRecipe object
   const handleChange = e => {
     e.preventDefault();
-    setNewRecipe({ ...newRecipe, [e.target.name]: e.target.value });
+    setNewRecipe({
+      ...newRecipe,
+      id: Date.now(),
+      [e.target.name]: e.target.value
+    });
   };
   //handles state changes for the ingredients and tags arrays before adding them to the newRecipe Object
   const handleIngredient = e => {
@@ -118,17 +122,15 @@ const NewRecipe = props => {
   const onSubmit = e => {
     e.preventDefault();
     if (document.getElementById("recipe_name").value != "") {
-      setNewRecipe({ id: Date.now() });
       // axiosAuth()
       //   .post("/recipe", newRecipe)
       //   .then(res => console.log(res.data));
-      newRecipe.time = Date.now();
       state.dispatch({
         type: "ADD",
         payload: [newRecipe]
       });
       setNewRecipe({
-        id: "",
+        id: 1,
         recipe_name: "",
         source: "",
         // ingredients: [{ id: "", ingredient: "", quantity: "", unit: "" }],
@@ -182,7 +184,6 @@ const NewRecipe = props => {
         value={newRecipe.source}
         placeholder="Author:"
         onChange={handleChange}
-
       />
       {newRecipe.ingredients.map((item, index) => (
         <ListItems key={index}>{item},</ListItems>
@@ -195,7 +196,6 @@ const NewRecipe = props => {
           value={ingredients.ingredients}
           placeholder="ingredient:"
           onChange={handleIngredient}
-
         />
         <BtnClick type="button" onClick={Ingredient}>
           Add Ingredient!

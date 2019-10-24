@@ -41,37 +41,37 @@ const AddCard = styled.div`
 function RecipeList(props) {
   const ctx = useContext(Context);
 
+  const [show, setShow] = useState(false);
 
-
-  //the toggles to display the addCard and NewRecipe form
-  const AddRecipe = () => {
-    setAddRecipeState(<NewRecipe />);
+  const toggleFalse = () => {
+    setShow(false);
   };
 
+  const toggleTrue = () => {
+    setShow(true);
+  };
 
-  //declare the addCard
   const addCard = (
-    <AddCard onClick={AddRecipe}>
+    <AddCard onClick={toggleTrue}>
       <h1>Add New Recipe</h1>
       <p>+</p>
     </AddCard>
   );
-  const DisplayRecipe = () => {
-    setAddRecipeState(addCard);
-  };
-
-  //everything is declared before state so the default state can call it properly
-  const [addRecipeState, setAddRecipeState] = useState(addCard);
-  //sets an event listener on rerender so we can toggle back
 
   useEffect(() => {
+    if (document.getElementById("addrecipe")) {
+      document
+        .getElementById("addrecipe")
+        .addEventListener("click", toggleTrue);
+    }
     if (document.getElementById("form")) {
-      document.getElementById("form").addEventListener("submit", DisplayRecipe);
+      document.getElementById("form").addEventListener("submit", toggleFalse);
     }
   });
+
   return (
     <RecipeContainer className="no-scroll">
-      {addRecipeState}
+      {(show && <NewRecipe />) || addCard}
       {ctx.state["show recipes"].map(item => (
         <div key={item.id}>
           <RecipeCard card={item}></RecipeCard>
