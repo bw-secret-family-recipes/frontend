@@ -81,8 +81,8 @@
 }
 
 .side-pannel {
-  width: 60%;
-  height: 100%;
+  width: 60% !important;
+  height: 100% !important;
 }
 
 
