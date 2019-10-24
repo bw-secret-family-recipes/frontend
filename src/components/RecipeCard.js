@@ -39,8 +39,9 @@ const CardContainer = styled.div`
     padding: 5px;
     color: white;
     margin-right:50px;
-    margin-top:50px;
+    margin-top:70px;
     transition: width 1s;
+
 
     .instructions{
         text-decoration: underline;
