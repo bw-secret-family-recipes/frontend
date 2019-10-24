@@ -35,7 +35,7 @@ const DashNav = () => {
 
         if (keyword == "sort") {
             let sorted = ctx.state.recipes.sort((a, b) => {
-                return a.time > b.time
+                return b.time - a.time
             })
 
             ctx.dispatch({
