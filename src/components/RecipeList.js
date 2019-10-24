@@ -14,6 +14,10 @@ const RecipeContainer = styled.div`
     justify-content: center;
     overflow:auto;
     position:relative;
+    
+    @media (max-width: 800px) {
+      width: 100%;
+    }
 `;
 const AddCard = styled.div`
   width: 250px;

@@ -123,6 +123,26 @@ export const recipe = [
    },
    {
       "id": 8,
+      "time": 60,
+      "user_id": 5,
+      "recipe_name": "Taco Casserole",
+      "source": "Someone Somewhere",
+      "categories": [
+         "Dinner",
+         "Beef"
+      ],
+      "ingredients": [
+         "Casserole serving a party",
+         "1 bag Doritos",
+         "1 lb Ground Beef (salt and pepper to taste)",
+         "1 package Taco Seasoning",
+         "16 oz Mixed Cheese",
+         "1 bag fresh lettuce",
+         "1 can Salsa (your preferred scoville)",
+         "1 medium onion",
+         "1 clove Garlic",
+      ],
+      "recipe_instructions": "Pre-heat oven to 400deg F. Chop onion and set asside. Take out your ground beef and mix in salt and pepper, then saute over medium heat until cooked thoroughly. Add in your onion and garlic and sautee unil somewhat transparent and mix in your taco seasoning. You're almost there! Now just coat the bottom of your glass pan with a pit of no-stick spray, butter or oil (your choice, just not too much). Here's the fun part, crush up all of the doritos, then pour them into the bottom of your pan. Next, put taco meat in, then a layer of cheese, then a layer of lettuce, then a second (light) layer of cheese, and lastly a bit of salsa on top. Now you just stick it into your pre-heated oven for 20 mins then enjoy! Be sure to have your favorite taco toppings on standby for full enjoyment.",
       "time": 8,
       "user_id": 5,
       "recipe_name": "Mac N Cheese",
