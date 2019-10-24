@@ -3,6 +3,11 @@
 <h4>Mission</h4>
 <p>We help preserve the information from loved ones for little to no cost, because they deserve it.</p>
 
+<img src='./screenshots/dashboard.png' />
+<img src='./screenshots/login.png' />
+
+
+
 <h4>Deployed Site</h4>
 <a href="https://frontend.bw-secret-family-recipes.now.sh">https://frontend.bw-secret-family-recipes.now.sh/</a>
 
