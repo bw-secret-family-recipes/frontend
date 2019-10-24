@@ -117,14 +117,24 @@ const NewRecipe = props => {
   //adds newRecipe to the reducer and will eventually make an api call
   const onSubmit = e => {
     e.preventDefault();
-    if (document.getElementById("recipe_instructions").value != "") {
+    if (document.getElementById("recipe_name").value != "") {
       setNewRecipe({ id: Date.now() });
       // axiosAuth()
       //   .post("/recipe", newRecipe)
       //   .then(res => console.log(res.data));
+      newRecipe.time = Date.now();
       state.dispatch({
         type: "ADD",
         payload: [newRecipe]
+      });
+      setNewRecipe({
+        id: "",
+        recipe_name: "",
+        source: "",
+        // ingredients: [{ id: "", ingredient: "", quantity: "", unit: "" }],
+        categories: [],
+        ingredients: [],
+        recipe_instructions: ""
       });
     }
   };
@@ -139,7 +149,6 @@ const NewRecipe = props => {
       });
       setIngredients({ ingredients: "" });
       document.getElementById("ingredientinput").value = "";
-      console.log(newRecipe.ingredients);
     }
   };
   //adds tags to the newRecipe categories array
@@ -159,11 +168,13 @@ const NewRecipe = props => {
   return (
     <MainForm id="form" onSubmit={onSubmit} className="no-scroll">
       <InputBox
+        id="recipe_name"
         type="text"
         name="recipe_name"
         value={newRecipe.recipe_name}
         placeholder="Title:"
         onChange={handleChange}
+        required
       />
       <InputBox
         type="text"
@@ -171,6 +182,7 @@ const NewRecipe = props => {
         value={newRecipe.source}
         placeholder="Author:"
         onChange={handleChange}
+
       />
       {newRecipe.ingredients.map((item, index) => (
         <ListItems key={index}>{item},</ListItems>
@@ -183,6 +195,7 @@ const NewRecipe = props => {
           value={ingredients.ingredients}
           placeholder="ingredient:"
           onChange={handleIngredient}
+
         />
         <BtnClick type="button" onClick={Ingredient}>
           Add Ingredient!

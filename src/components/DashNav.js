@@ -49,8 +49,22 @@ const DashNav = () => {
     const ctx = useContext(Context)
 
     function handleClick(keyword) {
+
+        if (keyword == "sort") {
+            let sorted = ctx.state.recipes.sort((a, b) => {
+                return a.time > b.time
+            })
+
+            ctx.dispatch({
+                type: "UPDATE_SHOW",
+                payload: sorted
+            })
+            return
+        }
+
         let filtered = ctx.state.recipes.filter(rec => {
-            if (keyword == "new recipe" || keyword == "sort") return true;
+            if (keyword == "new recipe") return true;
+
             return rec.categories.map(v => v.toLowerCase()).includes(keyword)
         })
 

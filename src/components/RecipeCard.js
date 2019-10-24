@@ -4,6 +4,8 @@ import styled from 'styled-components';
 // import {Edit} from 'styled-icons/boxicons-regular/Edit';
 import { axiosAuth, Context } from "../utils"
 
+
+//styling
 const CardContainer = styled.div`
     overflow:auto;
     display: flex;
@@ -17,6 +19,8 @@ const CardContainer = styled.div`
     color: white;
     margin-right:50px;
     margin-top:50px;
+    transition: width 1s;
+
     .ingredients{
         width:100%;
         min-height:150px;
@@ -31,6 +35,9 @@ const CardContainer = styled.div`
             color: white;
             padding:15px 0;
         }
+    .side-pannel {
+        width: 100%;
+    }
     }
 `;
 const CardTitle = styled.h2`
@@ -78,13 +85,16 @@ const FullscreenButton = styled.button`
         transition: .5s;
     }
     
+    .side-pannel{
+        width: 50%;
+    }
     .toggling {
         width: 80%;
     }
 `;
 
-function RecipeCard({ card }) {
-
+function RecipeCard(props) {
+    const { card , handleFullscreen} = props;
     const { state, dispatch } = useContext(Context)
 
     const [editing, setEditing] = useState(false);
@@ -106,23 +116,21 @@ function RecipeCard({ card }) {
     }
 
     function handleDelete() {
-        
+
         // Use once backend is up
         // axiosAuth().delete(`recipe/${card.id}`)
         // .then(res => console.log(res))
         // .catch(res => console.log(res))
         console.log(card.id);
         dispatch({
-                        type: "DELETE",
-                        payload: card.id
-                    })
+            type: "DELETE",
+            payload: card.id
+        })
     }
 
-    function handleFullscreen() {
-        setCardSize(s => !s)  
-        // var element = document.getElementsByClassName('toggling')
-        // element.classList.toggle('toggling');
-    }
+    // function handleFullscreen() {
+    //     setCardSize(s => !s)
+    // }
 
     function handleSubmit() {
         dispatch({
@@ -134,7 +142,9 @@ function RecipeCard({ card }) {
     }
 
     return (
-        <CardContainer className= {`no-scroll ${(cardSize) ? 'toggling' : ''}`} onChange = {handleFullscreen}>
+        // <div className = {`${(cardSize) ? 'side-pannel' : ''}`} onChange = {handleFullscreen}>Hello</div>
+        <CardContainer className={`no-scroll ${(cardSize) ? 'toggling' : ''}`} onChange={handleFullscreen}>
+            
             <div className='card-title'>
                 <CardTitle name="recipe_name" onChange={handleChange} contentEditable={editing} className={(editing ? "edit" : "")}>{card["recipe_name"]}</CardTitle>
             </div>
@@ -145,7 +155,7 @@ function RecipeCard({ card }) {
                 <IngredientsUL>
                     {card.ingredients.map((v, i) => {
                         return (
-                            <IngredientsLI key={i} name="ingredients" onChange={handleChange} contentEditable={editing} className={(editing ? "edit" : "")}>{v}</IngredientsLI>
+                            <IngredientsLI key={i} name="ingredients" onChange={handleChange} contentEditable={editing} className={(editing ? "edit" : "")}>&#127859;{v}</IngredientsLI>
                         )
                     })}
                 </IngredientsUL>
@@ -154,10 +164,11 @@ function RecipeCard({ card }) {
                 <p>Instructions: <span name="instructions" onChange={handleChange} contentEditable={editing} className={(editing ? "edit" : "")}> {card["recipe_instructions"]}</span></p>
             </div>
             <ButtonContainer>
-                <Button onClick={handleEdit}><i className = 'material-icons lime601 md-36'>edit</i></Button>
-                <Button onClick={handleDelete}><i className = 'material-icons lime601 md-36'>delete</i></Button>
-                <FullscreenButton onClick = {handleFullscreen}><i className = 'material-icons lime601 md-36'>photo_size_select_small</i></FullscreenButton>
-                {editing && <Button onClick={handleSubmit}><i className = 'material-icons lime601 md-36'>check_circle_outline</i></Button>}   
+                <Button onClick={handleEdit}><i className='material-icons lime601 md-36'>edit</i></Button>
+                <Button onClick={handleDelete}><i className='material-icons lime601 md-36'>delete</i></Button>
+                <FullscreenButton onClick={()=>handleFullscreen(<RecipeCard {...props}/>)}><i className='material-icons lime601 md-36'>photo_size_select_small</i></FullscreenButton>
+                {editing && <Button onClick={handleSubmit}><i className='material-icons lime601 md-36'>check_circle_outline</i></Button>}
+
             </ButtonContainer>
         </CardContainer>
     )
