@@ -116,20 +116,20 @@ function RecipeCard({ card }) {
     }
 
     function handleDelete() {
-        
+
         // Use once backend is up
         // axiosAuth().delete(`recipe/${card.id}`)
         // .then(res => console.log(res))
         // .catch(res => console.log(res))
         console.log(card.id);
         dispatch({
-                        type: "DELETE",
-                        payload: card.id
-                    })
+            type: "DELETE",
+            payload: card.id
+        })
     }
 
     function handleFullscreen() {
-        setCardSize(s => !s)  
+        setCardSize(s => !s)
         // var element = document.getElementsByClassName('toggling')
         // element.classList.toggle('toggling');
     }
@@ -143,10 +143,10 @@ function RecipeCard({ card }) {
         setEditing(false)
     }
 
-    
+
 
     return (
-        <CardContainer className= {`no-scroll ${(cardSize) ? 'toggling' : ''}`} onChange = {handleFullscreen}>
+        <CardContainer className={`no-scroll ${(cardSize) ? 'toggling' : ''}`} onChange={handleFullscreen}>
             <div className='card-title'>
                 <CardTitle name="recipe_name" onChange={handleChange} contentEditable={editing} className={(editing ? "edit" : "")}>{card["recipe_name"]}</CardTitle>
             </div>
@@ -157,7 +157,7 @@ function RecipeCard({ card }) {
                 <IngredientsUL>
                     {card.ingredients.map((v, i) => {
                         return (
-                            <IngredientsLI key={i} name="ingredients" onChange={handleChange} contentEditable={editing} className={(editing ? "edit" : "")}>{v}</IngredientsLI>
+                            <IngredientsLI key={i} name="ingredients" onChange={handleChange} contentEditable={editing} className={(editing ? "edit" : "")}>&#127859;{v}</IngredientsLI>
                         )
                     })}
 
@@ -167,11 +167,11 @@ function RecipeCard({ card }) {
                 <p>Instructions: <span name="instructions" onChange={handleChange} contentEditable={editing} className={(editing ? "edit" : "")}> {card["recipe_instructions"]}</span></p>
             </div>
             <ButtonContainer>
-                <Button onClick={handleEdit}><i className = 'material-icons lime601 md-36'>edit</i></Button>
-                <Button onClick={handleDelete}><i className = 'material-icons lime601 md-36'>delete</i></Button>
-                <FullscreenButton onClick = {handleFullscreen}><i className = 'material-icons lime601 md-36'>photo_size_select_small</i></FullscreenButton>
-                {editing && <Button onClick={handleSubmit}><i className = 'material-icons lime601 md-36'>check_circle_outline</i></Button>}
-                
+                <Button onClick={handleEdit}><i className='material-icons lime601 md-36'>edit</i></Button>
+                <Button onClick={handleDelete}><i className='material-icons lime601 md-36'>delete</i></Button>
+                <FullscreenButton onClick={handleFullscreen}><i className='material-icons lime601 md-36'>photo_size_select_small</i></FullscreenButton>
+                {editing && <Button onClick={handleSubmit}><i className='material-icons lime601 md-36'>check_circle_outline</i></Button>}
+
             </ButtonContainer>
         </CardContainer>
     )

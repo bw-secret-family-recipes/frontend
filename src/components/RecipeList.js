@@ -41,6 +41,8 @@ const AddCard = styled.div`
 function RecipeList(props) {
   const ctx = useContext(Context);
 
+
+
   //the toggles to display the addCard and NewRecipe form
   const AddRecipe = () => {
     setAddRecipeState(<NewRecipe />);
@@ -57,9 +59,11 @@ function RecipeList(props) {
   const DisplayRecipe = () => {
     setAddRecipeState(addCard);
   };
+
   //everything is declared before state so the default state can call it properly
   const [addRecipeState, setAddRecipeState] = useState(addCard);
   //sets an event listener on rerender so we can toggle back
+
   useEffect(() => {
     if (document.getElementById("form")) {
       document.getElementById("form").addEventListener("submit", DisplayRecipe);
