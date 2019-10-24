@@ -122,6 +122,7 @@ const NewRecipe = props => {
       // axiosAuth()
       //   .post("/recipe", newRecipe)
       //   .then(res => console.log(res.data));
+      newRecipe.time = Date.now();
       state.dispatch({
         type: "ADD",
         payload: [newRecipe]
@@ -164,6 +165,7 @@ const NewRecipe = props => {
         value={newRecipe.recipe_name}
         placeholder="Title:"
         onChange={handleChange}
+        required
       />
       <InputBox
         type="text"
@@ -171,6 +173,7 @@ const NewRecipe = props => {
         value={newRecipe.source}
         placeholder="Author:"
         onChange={handleChange}
+
       />
       {newRecipe.ingredients.map((item, index) => (
         <ListItems key={index}>{item},</ListItems>
@@ -183,6 +186,7 @@ const NewRecipe = props => {
           value={ingredients.ingredients}
           placeholder="ingredient:"
           onChange={handleIngredient}
+
         />
         <BtnClick type="button" onClick={Ingredient}>
           Add Ingredient!

@@ -17,8 +17,8 @@ function Dashboard(props) {
                 <NavLrg {...props} />
             </header>
             <Column>
-                <DashNav></DashNav>
-                <RecipeList></RecipeList>
+                <DashNav/>
+                <RecipeList/>
             </Column>
         </div>
     );
