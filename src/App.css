@@ -76,12 +76,13 @@
   color: steelblue !important;
 }
 
-.visible{
-  opacity:1 !important;
+.visible {
+  opacity: 1 !important;
 }
 
-.side-pannel{
+.side-pannel {
   width: 60%;
+  height: 100%;
 }
 
 
@@ -100,4 +101,3 @@
   to{width: 80%;}
   
 } */
-

@@ -2,16 +2,19 @@ import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import RecipeCard from "./RecipeCard";
 import NewRecipe from "./NewRecipeForm";
+import Carousel from "./Carousel"
 import { Context } from "../utils";
 
 const RecipeContainer = styled.div`
     width: 85%;
+    height:100%;
     display: flex;
     background: #f2e2ce
-    height: 80vh;
     flex-wrap:wrap;
     justify-content: center;
     overflow:auto;
+    position:relative;
+    padding-top:20px;
 `;
 const AddCard = styled.div`
   width: 250px;
@@ -41,7 +44,7 @@ const AddCard = styled.div`
 
 function RecipeList(props) {
   const ctx = useContext(Context);
-  const {handleFullscreen} = props;
+  const { handleFullscreen } = props;
 
 
   //the toggles to display the addCard and NewRecipe form
@@ -72,16 +75,19 @@ function RecipeList(props) {
     }
   });
   return (
+
     <RecipeContainer className="no-scroll">
+      <Carousel items={ctx.state["show recipes"]}></Carousel>
       {addRecipeState}
       {ctx.state["show recipes"].map(item => (
         <div key={item.id}>
           <RecipeCard handleFullscreen={handleFullscreen} card={item}></RecipeCard>
         </div>
-        
+
       ))}
 
     </RecipeContainer>
+
   );
 }
 export default RecipeList;

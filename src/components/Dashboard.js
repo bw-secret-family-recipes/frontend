@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 import styled from 'styled-components';
 import DashNav from './DashNav';
@@ -9,7 +9,7 @@ import RecipeCard from './RecipeCard';
 
 const Column = styled.div`
     display: flex;
-    height:85%;
+    height:85vh;
 `;
 
 const LargeCard = styled.div`
@@ -18,8 +18,8 @@ const LargeCard = styled.div`
   justify-content: center;
   align-items: center;
   width:0;
+  height:0;
   overflow:hidden;
-  transition:1s ease;
 
   .activeCardContainer{
     height:100%;
@@ -30,8 +30,8 @@ const LargeCard = styled.div`
     align-items: center;
     transition:1s ease;
     &>div{
-        width: 95%;
-        height:95%;
+        width: 100%;
+        height:100%;
         padding-right: 2%;
         padding-top: 2%;
         margin: 0 auto;
@@ -48,18 +48,18 @@ function Dashboard(props) {
     const [activeCard, setActiveCard] = useState();
     function sidebarHandler(component) {
         setActiveCard(component)
-        setCardSize(s => !s); 
+        setCardSize(s => !s);
     }
-    
+
     return (
         <div >
             <header className="App-header">
                 <NavLrg {...props} />
             </header>
             <Column>
-                <DashNav/>
-                <RecipeList handleFullscreen={sidebarHandler}/>
-                <LargeCard className = {`${(cardSize) ? 'side-pannel' : ''}`} onChange = {sidebarHandler}>
+                <DashNav />
+                <RecipeList handleFullscreen={sidebarHandler} />
+                <LargeCard className={`${(cardSize) ? 'side-pannel' : ''}`} onChange={sidebarHandler}>
                     <div className={`activeCardContainer ${(cardSize) ? 'visible' : ''}`}>{activeCard}</div>
                 </LargeCard>
             </Column>
