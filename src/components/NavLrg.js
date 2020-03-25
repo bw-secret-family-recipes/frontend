@@ -85,7 +85,7 @@ const NavLrg = (props) => {
                 <Search>
                     <i className="material-icons lime600 md-36"><SearchForm />search</i>
                 </Search>
-                <StyledLink href="https://familyrecipesapp.netlify.com/">Home</StyledLink>
+                <StyledLink href="https://cbsecretfamilyrecipes.netlify.com/">Home</StyledLink>
                 <Divide>|</Divide>
                 <StyleSignBtn onClick={handleSignin}>{(signin)}</StyleSignBtn>
             </LinkWrap>
